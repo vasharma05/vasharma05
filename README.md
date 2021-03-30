@@ -1,6 +1,8 @@
-<h1 align="center">Namaste 🙏, I'm Vineet Sharma!</h1>
+<h1 align="center" hidden>Namaste 🙏, I'm Vineet Sharma!</h1>
+<img align="center" src="cover.png"/>
+<br />
 <h3 align="center">A passionate MERN developer from India.</h3>
-
+- A passionate MERN developer from India.
 - 🌱 I’m currently learning **Data Science**
 
 - 👨‍💻 All of my projects are available at [github.com/vasharma05](github.com/vasharma05)
