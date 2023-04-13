@@ -9,7 +9,7 @@
 
 - 📫 Find me on Google by [**vasharma05**](https://www.google.com/search?q=vasharma05)
 
-- 📫 How to reach me **sharmava05@gmail.com**
+- 📫 Reach me at **sharmava05@gmail.com**
 
 - ⚡ Fun fact **I love to work!**
 
