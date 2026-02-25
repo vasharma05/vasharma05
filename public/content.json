@@ -1,0 +1,677 @@
+{
+  "site": {
+    "visible": true,
+    "domain": "https://vasharma05.com",
+    "title": "Vineet Sharma – Senior Frontend Engineer",
+    "description": "Senior Frontend Engineer and open-source technical lead with experience in microfrontends architecture and digital health.",
+    "language": "en",
+    "canonicalPath": "/"
+  },
+  "profile": {
+    "visible": true,
+    "name": "Vineet Sharma",
+    "tagline": "Senior Frontend Engineer & Open-Source Technical Lead | Microfrontends & Digital Health",
+    "location": "Gurugram, India",
+    "email": "vasharma05.work@gmail.com",
+    "phone": "+91 9210347740",
+    "avatar": {
+      "visible": true,
+      "src": "/images/profile.jpg",
+      "alt": "Portrait of Vineet Sharma"
+    }
+  },
+  "socials": [
+    {
+      "visible": true,
+      "id": "github",
+      "label": "GitHub",
+      "url": "https://github.com/vasharma05",
+      "username": "vasharma05"
+    },
+    {
+      "visible": true,
+      "id": "linkedin",
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/vasharma05",
+      "username": "vasharma05"
+    }
+  ],
+  "navigation": [
+    { "visible": true, "id": "about", "label": "About", "targetId": "about" },
+    { "visible": true, "id": "experience", "label": "Experience", "targetId": "experience" },
+    { "visible": true, "id": "skills", "label": "Skills", "targetId": "skills" },
+    { "visible": true, "id": "leadership", "label": "Leadership", "targetId": "leadership" },
+    { "visible": true, "id": "achievements", "label": "Achievements", "targetId": "achievements" },
+    { "visible": true, "id": "events", "label": "Events", "targetId": "events" },
+    { "visible": true, "id": "projects", "label": "Projects", "targetId": "projects" },
+    { "visible": true, "id": "contact", "label": "Contact", "targetId": "contact" }
+  ],
+  "hero": {
+    "visible": true,
+    "headline": "Hi, I’m",
+    "highlightName": "Vineet Sharma",
+    "subtitle": "Senior Frontend Engineer with 4+ years building microfrontend architectures and digital health products.",
+    "primaryCta": {
+      "visible": true,
+      "label": "Hire Me",
+      "targetId": "contact"
+    }
+  },
+  "about": {
+    "visible": true,
+    "title": "About Me",
+    "summaryItems": [
+      {
+        "visible": true,
+        "text": "Senior Frontend Engineer with 4 years of experience in microfrontends architecture, React.js, and TypeScript, seeking a technical leadership position."
+      },
+      {
+        "visible": true,
+        "text": "Core maintainer and technical leader for the global OpenMRS 3 project, impacting thousands of healthcare sites worldwide."
+      },
+      {
+        "visible": true,
+        "text": "Proven track record of leading and shipping impactful cross-platform applications in the digital health domain with scalable, seamless architectures."
+      },
+      {
+        "visible": true,
+        "text": "Strong communicator and mentor (GSoC Admin/Mentor), thriving in collaborative, cross-functional environments."
+      }
+    ]
+  },
+  "education": {
+    "visible": true,
+    "items": [
+      {
+        "visible": true,
+        "degree": "Dual Degree (B.Tech. + M.Tech.)",
+        "institution": "National Institute of Technology, Hamirpur",
+        "location": "Hamirpur, Himachal Pradesh",
+        "period": "Aug 2017 – Jun 2022",
+        "details": [
+          {
+            "visible": true,
+            "text": "Master of Technology (M.Tech.), CGPA 9.80 / 10"
+          },
+          {
+            "visible": true,
+            "text": "Bachelor of Technology (B.Tech.), CGPA 9.43 / 10"
+          }
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "visible": true,
+    "items": [
+      {
+        "visible": true,
+        "company": "Madiro.org",
+        "role": "Software Engineer III",
+        "location": "Toronto, Canada",
+        "period": "Feb 2025 – Present",
+        "primaryLink": {
+          "visible": true,
+          "label": "madiro.org",
+          "url": "https://www.madiro.org"
+        },
+        "projects": [
+          {
+            "visible": true,
+            "name": "Ubuntu Village of Life – Health Information System (Burundi)",
+            "highlights": [
+              {
+                "visible": true,
+                "text": "Led the implementation of an integrated Health Information System using Ozone HIS for Ubuntu Village of Life in Burundi."
+              },
+              {
+                "visible": true,
+                "text": "Set up OpenMRS for patient record management and Odoo for pharmacy, billing, and inventory with both systems synced to automate patient billing for medications, labs, and procedures."
+              },
+              {
+                "visible": true,
+                "text": "Implemented Single Sign-On (SSO) using Keycloak for secure access to OpenMRS and Odoo, managing role-based access control through Keycloak."
+              }
+            ]
+          },
+          {
+            "visible": true,
+            "name": "Health Information System – Mosul, Iraq (Médecins Sans Frontières)",
+            "highlights": [
+              {
+                "visible": true,
+                "text": "Improved scripts to generate OpenMRS digital forms directly from an Excel sheet."
+              },
+              {
+                "visible": true,
+                "text": "Managed OpenMRS data (forms, diagnoses, laboratory tests, medical procedures, etc.) for the implementation via Open Concept Lab."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "visible": true,
+        "company": "OpenMRS",
+        "role": "Software Engineer (Dev/4), Global Product Support Team",
+        "location": "United States (remote)",
+        "period": "Feb 2021 – Present",
+        "primaryLink": {
+          "visible": true,
+          "label": "openmrs.org",
+          "url": "https://openmrs.org"
+        },
+        "highlights": [
+          {
+            "visible": true,
+            "text": "Lead mentor for the Improved Implementer Tools project in Google Summer of Code 2025."
+          },
+          {
+            "visible": true,
+            "text": "Building OpenMRS 3 using microfrontends architecture in TypeScript/JavaScript and React.js."
+          },
+          {
+            "visible": true,
+            "text": "Responsible for maintenance, reviews, testing, debugging, feature enhancements, performance, and releases across the OpenMRS 3 ecosystem."
+          },
+          {
+            "visible": true,
+            "text": "Support multiple organizations to onboard and build on OpenMRS 3.0."
+          },
+          {
+            "visible": true,
+            "text": "Lead daily and weekly squad calls with community members, including debugging, learning sessions, and updates."
+          },
+          {
+            "visible": true,
+            "text": "Google Summer of Code participation: GSoC 2025 mentor, GSoC 2024 Admin, GSoC 2023 Mentor, GSoC 2021 Contributor."
+          }
+        ]
+      },
+      {
+        "visible": true,
+        "company": "Mekom Solutions",
+        "role": "Software Engineer II",
+        "location": "Singapore (remote)",
+        "period": "Sep 2021 – Feb 2025",
+        "primaryLink": {
+          "visible": true,
+          "label": "mekomsolutions.com",
+          "url": "https://mekomsolutions.com/"
+        },
+        "secondaryLinks": [
+          {
+            "visible": true,
+            "label": "ozone-his.com",
+            "url": "https://www.ozone-his.com/"
+          }
+        ],
+        "highlights": [
+          {
+            "visible": true,
+            "text": "Led frontend Ozone HIS implementation for Hôpital du Sacré-Cœur-de-Montréal, France."
+          },
+          {
+            "visible": true,
+            "text": "Led frontend implementation and development of Ozone HIS for the Ministry of Health, Cambodia (World Bank–funded project)."
+          },
+          {
+            "visible": true,
+            "text": "Led development of an in‑patient ward management dashboard for OpenMRS 3 in collaboration with Partners In Health, USA."
+          },
+          {
+            "visible": true,
+            "text": "Mentored a Software Engineer through OpenMRS 3 development."
+          },
+          {
+            "visible": true,
+            "text": "Led translation implementation for OpenMRS 3 and OpenMRS Form Engine using i18next, enabling easy LTR/RTL language support via Transifex."
+          }
+        ]
+      }
+    ]
+  },
+  "skills": {
+    "visible": true,
+    "domains": [
+      {
+        "visible": true,
+        "id": "core",
+        "label": "Core Skills",
+        "items": [
+          { "visible": true, "label": "TypeScript" },
+          { "visible": true, "label": "JavaScript" },
+          { "visible": true, "label": "Python" },
+          { "visible": true, "label": "C/C++" },
+          { "visible": true, "label": "Data Structures & Algorithms" },
+          { "visible": true, "label": "DBMS" },
+          { "visible": true, "label": "Operating Systems" },
+          { "visible": true, "label": "Distributed Systems" },
+          { "visible": true, "label": "Object-Oriented Programming" }
+        ]
+      },
+      {
+        "visible": true,
+        "id": "frontend",
+        "label": "Frontend & Microfrontends",
+        "items": [
+          { "visible": true, "label": "Microfrontends Architecture" },
+          { "visible": true, "label": "Single-spa.js" },
+          { "visible": true, "label": "Piral.js" },
+          { "visible": true, "label": "React.js" },
+          { "visible": true, "label": "Next.js" },
+          { "visible": true, "label": "Redux.js" },
+          { "visible": true, "label": "Angular" },
+          { "visible": true, "label": "HTML5" },
+          { "visible": true, "label": "CSS3" },
+          { "visible": true, "label": "i18next" },
+          { "visible": true, "label": "Web Workers" },
+          { "visible": true, "label": "Performance Tuning" },
+          { "visible": true, "label": "Safety Optimizations" },
+          { "visible": true, "label": "Git" }
+        ]
+      },
+      {
+        "visible": true,
+        "id": "state-management",
+        "label": "State Management",
+        "items": [
+          { "visible": true, "label": "Context API" },
+          { "visible": true, "label": "Reducer API" },
+          { "visible": true, "label": "React Redux" },
+          { "visible": true, "label": "Zustand" }
+        ]
+      },
+      {
+        "visible": true,
+        "id": "ui-frameworks",
+        "label": "UI Frameworks",
+        "items": [
+          { "visible": true, "label": "Carbon Design System" },
+          { "visible": true, "label": "Material UI" },
+          { "visible": true, "label": "Ant Design" },
+          { "visible": true, "label": "Tailwind CSS" },
+          { "visible": true, "label": "Bootstrap" }
+        ]
+      },
+      {
+        "visible": true,
+        "id": "testing",
+        "label": "Testing",
+        "items": [
+          { "visible": true, "label": "Jest" },
+          { "visible": true, "label": "React Testing Library" },
+          { "visible": true, "label": "Playwright" },
+          { "visible": true, "label": "Enzyme" }
+        ]
+      },
+      {
+        "visible": true,
+        "id": "tooling",
+        "label": "Bundling & Tooling",
+        "items": [
+          { "visible": true, "label": "Webpack 5" },
+          { "visible": true, "label": "Webpack 5 Module Federation" },
+          { "visible": true, "label": "Turbopack" },
+          { "visible": true, "label": "Vite" }
+        ]
+      },
+      {
+        "visible": true,
+        "id": "backend",
+        "label": "Backend & Databases",
+        "items": [
+          { "visible": true, "label": "Node.js" },
+          { "visible": true, "label": "Django" },
+          { "visible": true, "label": "Django Channels" },
+          { "visible": true, "label": "REST APIs" },
+          { "visible": true, "label": "API Development" },
+          { "visible": true, "label": "MySQL" },
+          { "visible": true, "label": "MongoDB" },
+          { "visible": true, "label": "WebSockets" },
+          { "visible": true, "label": "AWS" }
+        ]
+      },
+      {
+        "visible": true,
+        "id": "devops",
+        "label": "Cloud & DevOps",
+        "items": [
+          { "visible": true, "label": "Docker" },
+          { "visible": true, "label": "Jenkins" },
+          { "visible": true, "label": "Akamai" },
+          { "visible": true, "label": "Grafana" }
+        ]
+      },
+      {
+        "visible": true,
+        "id": "project-management",
+        "label": "Project Management & Collaboration",
+        "items": [
+          { "visible": true, "label": "JIRA" },
+          { "visible": true, "label": "Confluence / Wiki" },
+          { "visible": true, "label": "GitHub" },
+          { "visible": true, "label": "GitHub Workspaces" },
+          { "visible": true, "label": "Gitpod" },
+          { "visible": true, "label": "Bitwarden" },
+          { "visible": true, "label": "GitLab" }
+        ]
+      },
+      {
+        "visible": true,
+        "id": "ai-assistants",
+        "label": "AI Assistants",
+        "items": [
+          { "visible": true, "label": "Cursor AI" },
+          { "visible": true, "label": "GitHub Copilot" },
+          { "visible": true, "label": "Claude" },
+          { "visible": true, "label": "GPT" }
+        ]
+      },
+      {
+        "visible": true,
+        "id": "soft-skills",
+        "label": "Soft Skills",
+        "items": [
+          { "visible": true, "label": "Strong communicator" },
+          { "visible": true, "label": "Collaborative" },
+          { "visible": true, "label": "Problem solver" },
+          { "visible": true, "label": "Adaptable" },
+          { "visible": true, "label": "Mentor" },
+          { "visible": true, "label": "Empathy" },
+          { "visible": true, "label": "Attention to detail" },
+          { "visible": true, "label": "Critical thinker" }
+        ]
+      }
+    ]
+  },
+  "leadership": {
+    "visible": true,
+    "items": [
+      {
+        "visible": true,
+        "title": "Admin / Mentor – Google Summer of Code (GSoC)",
+        "organization": "OpenMRS",
+        "period": "GSoC 2025 Mentor, 2024 & 2023 Org Admin",
+        "description": "Admin and mentor for Google Summer of Code with OpenMRS, guiding contributors and shaping project scope."
+      },
+      {
+        "visible": true,
+        "title": "Frontend Team Lead",
+        "organization": "Mekom Solutions",
+        "period": "2023 – 2025",
+        "description": "Led frontend team for Ozone HIS implementations, mentoring engineers and driving architectural decisions."
+      },
+      {
+        "visible": true,
+        "title": "Training and Placement Representative",
+        "organization": "NIT Hamirpur",
+        "period": "2021 – 2022",
+        "description": "Coordinated between students and recruiters, organizing placement activities and communication."
+      }
+    ]
+  },
+  "achievements": {
+    "visible": true,
+    "items": [
+      {
+        "visible": true,
+        "title": "Three developer promotions in two years",
+        "issuer": "OpenMRS / Community roles",
+        "period": "",
+        "description": "Rapid progression from dev/4 to dev/2, reflecting increasing responsibility and impact."
+      },
+      {
+        "visible": true,
+        "title": "Solved 650+ LeetCode problems",
+        "issuer": "LeetCode",
+        "period": "",
+        "description": "Ranked around 75k globally with consistent participation in contests."
+      },
+      {
+        "visible": true,
+        "title": "Top 11% in LeetCode contests globally",
+        "issuer": "LeetCode",
+        "period": "",
+        "description": ""
+      }
+    ]
+  },
+  "events": {
+    "visible": true,
+    "items": [
+      {
+        "visible": true,
+        "title": "On-site UVL-EMR Implementation",
+        "type": "Implementation Visit",
+        "location": "Mugamba, Burundi",
+        "date": "Sep 2025",
+        "description": "On-site implementation work for Ubuntu Village of Life EMR rollout."
+      },
+      {
+        "visible": true,
+        "title": "OpenMRS Implementers Conference 2025",
+        "type": "Conference",
+        "location": "Kampala, Uganda",
+        "date": "Sep 2025",
+        "description": ""
+      },
+      {
+        "visible": true,
+        "title": "GSoC Mentor Summit 2024",
+        "type": "Summit",
+        "location": "Sunnyvale, California, USA",
+        "date": "Oct 2024",
+        "description": ""
+      },
+      {
+        "visible": true,
+        "title": "OpenMRS Implementers Conference 2024",
+        "type": "Conference",
+        "location": "Nairobi, Kenya",
+        "date": "Sep 2024",
+        "description": ""
+      },
+      {
+        "visible": true,
+        "title": "OpenMRS Form Engine Hackathon 2024",
+        "type": "Hackathon",
+        "location": "Kampala, Uganda",
+        "date": "Apr 2024",
+        "description": ""
+      }
+    ]
+  },
+  "references": {
+    "visible": true,
+    "items": [
+      {
+        "visible": true,
+        "name": "Grace Potma",
+        "role": "Director of Product, OpenMRS",
+        "email": "grace@openmrs.org"
+      },
+      {
+        "visible": true,
+        "name": "Micha\u00ebl Bontyes",
+        "role": "Director, Digital Health & Technology, Madiro",
+        "email": "michael.bontyes@madiro.org"
+      },
+      {
+        "visible": true,
+        "name": "Dimitri Renault",
+        "role": "CEO, Mekom Solutions",
+        "email": "dimitri@mekomsolutions.com"
+      },
+      {
+        "visible": true,
+        "name": "Ian Bacher",
+        "role": "Senior Software Engineer, University of Washington",
+        "email": "ian.c.bacher@gmail.com"
+      },
+      {
+        "visible": true,
+        "name": "Dennis Kigen",
+        "role": "Senior Software Engineer, OpenMRS",
+        "email": "dennis@openmrs.org"
+      },
+      {
+        "visible": true,
+        "name": "Jayasanka",
+        "role": "Product Quality Engineering Lead, OpenMRS",
+        "email": "jayasanka@openmrs.org"
+      }
+    ]
+  },
+  "projects": {
+    "visible": true,
+    "items": [
+      {
+        "visible": true,
+        "slug": "ubuntu-village-of-life-his",
+        "title": "Ubuntu Village of Life – Health Information System",
+        "role": "Software Engineer III",
+        "organization": "Madiro.org",
+        "summary": "Led frontend implementation for an integrated Health Information System using Ozone HIS for Ubuntu Village of Life in Burundi.",
+        "tags": [
+          { "visible": true, "label": "Ozone HIS" },
+          { "visible": true, "label": "OpenMRS" },
+          { "visible": true, "label": "Odoo" },
+          { "visible": true, "label": "Keycloak" }
+        ],
+        "links": [],
+        "thumbnail": {
+          "visible": false,
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "visible": true,
+        "slug": "openmrs-3-platform",
+        "title": "OpenMRS 3 Platform",
+        "role": "Software Engineer (Dev/4)",
+        "organization": "OpenMRS",
+        "summary": "Core maintainer and contributor to the OpenMRS 3 microfrontend platform, supporting global implementations.",
+        "tags": [
+          { "visible": true, "label": "React" },
+          { "visible": true, "label": "TypeScript" },
+          { "visible": true, "label": "Microfrontends" }
+        ],
+        "links": [],
+        "thumbnail": {
+          "visible": false,
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "visible": true,
+        "slug": "ozone-his-moh-cambodia",
+        "title": "Ozone HIS – Ministry of Health, Cambodia",
+        "role": "Software Engineer II / Frontend Lead",
+        "organization": "Mekom Solutions",
+        "summary": "Led frontend implementation of Ozone HIS for the Ministry of Health, Cambodia, a World Bank–funded project.",
+        "tags": [
+          { "visible": true, "label": "Ozone HIS" },
+          { "visible": true, "label": "OpenMRS" },
+          { "visible": true, "label": "Frontend Architecture" }
+        ],
+        "links": [],
+        "thumbnail": {
+          "visible": false,
+          "src": "",
+          "alt": ""
+        }
+      }
+    ]
+  },
+  "contact": {
+    "visible": true,
+    "title": "Let\u2019s Work Together",
+    "email": {
+      "visible": true,
+      "address": "vasharma05.work@gmail.com"
+    },
+    "copy": {
+      "visible": true,
+      "text": "Have a project or role in mind? Share some details and I\u2019ll get back to you."
+    },
+    "mailto": {
+      "visible": true,
+      "to": "vasharma05.work@gmail.com",
+      "subjectPrefix": "[Portfolio Inquiry] ",
+      "bodyTemplateHint": "Use form field values to build a structured message body."
+    },
+    "form": {
+      "visible": true,
+      "fields": [
+        {
+          "visible": true,
+          "id": "name",
+          "label": "Name",
+          "type": "text",
+          "required": true
+        },
+        {
+          "visible": true,
+          "id": "email",
+          "label": "Email",
+          "type": "email",
+          "required": true
+        },
+        {
+          "visible": true,
+          "id": "subject",
+          "label": "Subject",
+          "type": "text",
+          "required": true
+        },
+        {
+          "visible": true,
+          "id": "company",
+          "label": "Company",
+          "type": "text",
+          "required": true
+        },
+        {
+          "visible": true,
+          "id": "projectType",
+          "label": "Project type",
+          "type": "select",
+          "required": true,
+          "options": [
+            { "visible": true, "value": "portfolio", "label": "Portfolio" },
+            { "visible": true, "value": "saas", "label": "SaaS" },
+            { "visible": true, "value": "marketing", "label": "Marketing site" },
+            { "visible": true, "value": "other", "label": "Other" }
+          ]
+        },
+        {
+          "visible": true,
+          "id": "budget",
+          "label": "Budget range",
+          "type": "text",
+          "required": true
+        },
+        {
+          "visible": true,
+          "id": "timeline",
+          "label": "Timeline",
+          "type": "text",
+          "required": true
+        },
+        {
+          "visible": true,
+          "id": "message",
+          "label": "Message",
+          "type": "textarea",
+          "required": true
+        }
+      ]
+    }
+  }
+}
+
+
+

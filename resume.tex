@@ -1,0 +1,681 @@
+%%%%%%%%%%%%%%%%%
+% This is an sample CV template created using altacv.cls
+% (v1.7, 9 August 2023) written by LianTze Lim (liantze@gmail.com). Compiles with pdfLaTeX, XeLaTeX and LuaLaTeX.
+%
+%% It may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%    http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%%%%%%%%%%%%%%%%
+
+%% Use the "normalphoto" option if you want a normal photo instead of cropped to a circle
+\documentclass[8pt,a4paper,normalphoto]{altacv}
+
+% \documentclass[14pt,a3paper,ragged2e,withhyper]{altacv}
+%% AltaCV uses the fontawesome5 and packages.
+%% See http://texdoc.net/pkg/fontawesome5 for full list of symbols.
+
+% Change the page layout if you need to
+\geometry{left=1cm,right=1cm,top=1cm,bottom=1cm,columnsep=1cm}
+
+% The paracol package lets you typeset columns of text in parallel
+\usepackage{paracol}
+\usepackage{hyperref}
+% \hypersetup{hidelinks}
+
+\hypersetup{
+    pdfborderstyle={/S/U/W 1},
+    colorlinks=false,
+    % linkcolor=blue
+    % linkbordercolor
+}
+
+
+
+
+
+% Change the font if you want to, depending on whether
+% you're using pdflatex or xelatex/lualatex
+% WHEN COMPILING WITH XELATEX PLEASE USE
+% xelatex -shell-escape -output-driver="xdvipdfmx -z 0" sample.tex
+\ifxetexorluatex
+  % If using xelatex or lualatex:
+  \setmainfont{Roboto Slab}
+  \setsansfont{Lato}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  % If using pdflatex:
+  \usepackage[rm]{roboto}
+  \usepackage[defaultsans]{lato}
+  % \usepackage{sourcesanspro}
+  \renewcommand{\familydefault}{\sfdefault}
+\fi
+
+% Change the colours if you want to
+\definecolor{SlateGrey}{HTML}{2E2E2E}
+\definecolor{LightGrey}{HTML}{666666}
+\definecolor{DarkPastelRed}{HTML}{450808}
+\definecolor{PastelRed}{HTML}{8F0D0D}
+\definecolor{GoldenEarth}{HTML}{E7D192}
+\colorlet{name}{black}
+\colorlet{tagline}{SlateGrey}
+\colorlet{heading}{SlateGrey}
+\colorlet{headingrule}{GoldenEarth}
+\colorlet{subheading}{SlateGrey}
+\colorlet{accent}{SlateGrey}
+\colorlet{emphasis}{SlateGrey}
+\colorlet{body}{LightGrey}
+
+% Change some fonts, if necessary
+\renewcommand{\namefont}{\LARGE\rmfamily\bfseries}
+\renewcommand{\personalinfofont}{\footnotesize}
+\renewcommand{\cvsectionfont}{\Large\rmfamily\bfseries}
+\renewcommand{\cvsubsectionfont}{\large\bfseries}
+
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\renewcommand{\cvItemMarker}{{\small\textbullet}}
+\renewcommand{\cvRatingMarker}{\faCircle}
+% ...and the markers for the date/location for \cvevent
+% \renewcommand{\cvDateMarker}{\faCalendar*[regular]}
+% \renewcommand{\cvLocationMarker}{\faMapMarker*}
+
+
+% If your CV/résumé is in a language other than English,
+% then you probably want to change these so that when you
+% copy-paste from the PDF or run pdftotext, the location
+% and date marker icons for \cvevent will paste as correct
+% translations. For example Spanish:
+% \renewcommand{\locationname}{Ubicación}
+% \renewcommand{\datename}{Fecha}
+
+
+%% Use (and optionally edit if necessary) this .tex if you
+%% want to use an author-year reference style like APA(6)
+%% for your publication list
+% \input{pubs-authoryear.tex}
+
+%% Use (and optionally edit if necessary) this .tex if you
+%% want an originally numerical reference style like IEEE
+%% for your publication list
+\input{pubs-num.tex}
+
+%% sample.bib contains your publications
+\addbibresource{sample.bib}
+
+\begin{document}
+\name{Vineet Sharma}
+\tagline{Senior Frontend Engineer \& Open-Source Technical Lead | Exp. in Microfrontends Architecture  \& Digital Health}
+%% You can add multiple photos on the left or right
+% \photoR{2.8cm}{Globe_High}
+% \photoL{2.5cm}{Yacht_High,Suitcase_High}
+
+\personalinfo{%
+  % Not all of these are required!
+  \email{vasharma05.work@gmail.com}
+  \phone{+91 9210347740}
+  \location{Gurugram, INDIA}
+  % \homepage{www.homepage.com}
+  % \twitter{@twitterhandle}
+  \linkedin{vasharma05}
+  \github{vasharma05}
+  % \orcid{0000-0000-0000-0000}
+  %% You can add your own arbitrary detail with
+  %% \printinfo{symbol}{detail}[optional hyperlink prefix]
+  % \printinfo{\faPaw}{Hey ho!}[https://example.com/]
+
+  %% Or you can declare your own field with
+  %% \NewInfoFiled{fieldname}{symbol}[optional hyperlink prefix] and use it:
+  % \NewInfoField{gitlab}{\faGitlab}[https://gitlab.com/]
+  % \gitlab{your_id}
+  %%
+  %% For services and platforms like Mastodon where there isn't a
+  %% straightforward relation between the user ID/nickname and the hyperlink,
+  %% you can use \printinfo directly e.g.
+  % \printinfo{\faMastodon}{@username@instace}[https://instance.url/@username]
+  %% But if you absolutely want to create new dedicated info fields for
+  %% such platforms, then use \NewInfoField* with a star:
+  % \NewInfoField*{mastodon}{\faMastodon}
+  %% then you can use \mastodon, with TWO arguments where the 2nd argument is
+  %% the full hyperlink.
+  % \mastodon{@username@instance}{https://instance.url/@username}
+}
+
+\makecvheader
+%% Depending on your tastes, you may want to make fonts of itemize environments slightly smaller
+% \AtBeginEnvironment{itemize}{\small}
+
+%% Set the left/right column width ratio to 6:4.
+\columnratio{0.4}
+
+% Start a 2-column paracol. Both the left and right columns will automatically
+% break across pages if things get too long.
+\begin{paracol}{2}
+
+
+% \cvsection{My Life Philosophy}
+
+% \begin{quote}
+% ``Something smart or heartfelt, preferably in one sentence.''
+% \end{quote}
+
+\cvsection{About me}
+
+\begin{itemize}
+    \item \textbf{Senior Frontend Engineer} with \textbf{4 years} of experience in Microfrontends Architecture, React.js, and TypeScript, seeking a technical leadership position.
+    \item \textbf{Core Maintainer and Technical Leader} for the global OpenMRS 3 project, impacting over 3000 healthcare sites worldwide.
+    \item Proven track record of \textbf{leading and shipping impactful cross-platform applications} in the Digital Health domain, focused on seamless and scalable architecture.
+    \item Strong communicator and mentor (GSoC Admin/Mentor), thriving in collaborative, cross-functional environments.
+\end{itemize}
+
+% \begin{itemize}
+% %     \item \textbf{Software Engineer} specialization in \textbf{Frontend web development} with \textbf{3+ years} of professional experience, looking for new opportunities extending Software Engineer 2 roles. 
+
+% %     \item 
+    
+% %     % \item \textbf{Dev/4 Maintainer and contributor} to OpenMRS' Open source project \textbf{OpenMRS 3} project since Feb 2021 and GSoC'24 Admin, GSoC'23 Mentor and GSoC'21 Contributor.
+
+% %     \item Experience in \textbf{Microfrontends Architecture, Docker, full stack development tools and frameworks}, specializing in \textbf{Frontend development}.
+    
+
+%  \item  I am a \textbf{Software Engineer 2} with \textbf{4 years} of experience in \textbf{Web Development (Frontend)}, specializing in \textbf{Microfrontends, React, JavaScript, TypeScript, Webpack, and more}.
+
+% \item A track record of shipping impactful cross-platform applications using React JS and Typescript. \textbf{A strong communicator with a collaborative mindset}, I thrive in cross-functional teams to create seamless user experiences. 
+
+% \item I contribute to the OpenMRS 3 project, used in 2000+ sites globally, and excel in delivering impactful solutions through collaboration and seamless user experience design.
+
+% % \item Postgraduate in Computer Science \& Engineering from NIT Hamirpur, passionate about innovation and continuous learning. 
+
+% \item \textbf{I am currently seeking Senior Software Engineer roles that offer new challenges and opportunities to transition into leadership positions.}
+
+% \end{itemize}
+
+
+\cvsection{Education}
+
+\cvevent{Dual Degree (B.Tech. + M.Tech.)}{National Institute of Technology, Hamirpur}{Aug 2017 -- June 2022}{Hamirpur, Himachal Pradesh}
+
+\textbf{Master of Technology (M.Tech.)}: 9.80 / 10
+
+\textbf{Bachelor of Technology (B.Tech.)}: 9.43 / 10
+
+% \divider
+
+% \cvevent{ in Technology (B.Tech.)}{National Institute of Technology Hamirpur}{Aug 2017 -- June 2022}{Hamirpur}
+% CGPA: 9.43/10
+
+% \divider
+
+% \cvevent{Senior Secondary Education}{Chiranjiv Bharati School}{May 2016}{Gurugram}
+% \textbf{Score:} 91.8\%
+
+% \smallskip
+
+\cvsection{Leadership}
+
+\cvachievement{\faStar}{\small Admin/ Mentor for Google Summer of Code (GSoC)}{OpenMRS | 2025 Mentor | 2024 \& 2023 Org Admin}
+
+% \smallskip
+
+\cvachievement{\faStar}{Frontend Team lead}{Mekom Solutions | 2023 -- 2025}
+% \smallskip
+
+% \cvachievement{\faTrophy}{}{OpenMRS | 2023}
+% \divider
+
+\cvachievement{\faStar}{Training and Placement Representative}{NIT Hamirpur | 2021 -- 2022}
+
+% \smallskip
+
+% \cvachievement{\faStar}{Secretary (External Affairs), Robotics Society NITH}{2020 -- 2021}
+
+
+\cvsection{Achievements}
+
+% \cvachievement{\faTrophy}{2 time Hacker of the Day title}{Form Engine Hackathon, Kampala}
+
+% \smallskip
+
+\cvachievement{\faTrophy}{3 Dev promotions in 2 years}{dev/4 -- dev/3 -- dev/2}
+
+% \smallskip
+
+\cvachievement{\faTrophy}{Solved 650+ questions on LeetCode}{75k global rank}
+
+% \smallskip
+
+\cvachievement{\faTrophy}{Among top 11\%}{LeetCode contests globally}
+
+% \divider
+
+% \cvachievement{\faTrophy}{Among top 30 devs}{OpenMRS | 2021}
+
+% \divider
+
+% \cvachievement{\faTrophy}{National Finalist}{Smart India Hackathon | 2019, 2020}
+
+\cvsection{Events attended}
+
+\cvachievement{\faGlobe}{On-site UVL-EMR Implementation}{Mugamba, Burundi | Sept 2025}
+
+\cvachievement{\faGlobe}{OpenMRS Implementers Conference 2025}{Kampala, Uganda | Sept 2025}
+
+
+\cvachievement{\faGlobe}{GSoC Mentor Summit 2024}{Sunnyvale, California, USA | Oct 2024}
+
+% \smallskip
+
+\cvachievement{\faGlobe}{OpenMRS Implementers Conference 2024}{Nairobi, Kenya | Sept 2024}
+
+% \smallskip
+
+\cvachievement{\faGlobe}{OpenMRS Form Engine Hackathon 2024}{Kampala, Uganda | Apr  2024}
+
+\cvsection{References}
+
+\href{mailto:grace@openmrs.org}{\cvachievement{\faEnvelope}{Grace Potma \small | grace@openmrs.org}{Director of Product, OpenMRS}}
+
+\href{mailto:michael.bontyes@madiro.org}{\cvachievement{\faEnvelope}{Michaël Bontyes \small | michael.bontyes@madiro.org}{Director, Digital Health \& Technology, Madiro}}
+
+
+\href{mailto:dimitri@mekomsolutions.com}{\cvachievement{\faEnvelope}{Dimitri Renault \small | dimitri@mekomsolutions.com}{CEO, Mekom Solutions}}
+
+% \href{mailto:romain@mekomsolutions.com}{\cvachievement{\faEnvelope}{Romain Buisson \small | romain@mekomsolutions.com}{COO, Mekom Solutions}}
+
+% \medskip
+
+\href{mailto:ian.c.bacher@gmail.com}{\cvachievement{\faEnvelope}{Ian Bacher \small | ian.c.bacher@gmail.com}{Senior Software Engineer, University of Washington}}
+
+% \medskip
+
+\href{mailto:dennis@openmrs.org}{\cvachievement{\faEnvelope}{Dennis Kigen \small | dennis@openmrs.org}{Senior Software Engineer, OpenMRS}}
+
+
+\href{mailto:jayasanka@openmrs.org}{\cvachievement{\faEnvelope}{Jayasanka \small | jayasanka@openmrs.org}{Product Quality Engineering Lead, OpenMRS}}
+
+
+%% Switch to the right column. This will now automatically move to the second
+%% page if the content is too long.
+\switchcolumn
+
+\cvsection{Experience}
+
+\cvevent{Software Engineer III}{Madiro.org | \href{https://www.madiro.org}{\faGlobe madiro.org}}{Feb 2025 -- Present}{Toronto, Canada}
+
+\textbf{Health Information System for \href{https://www.msf.org/}{Ubuntu Village of Life}, Burundi}
+\begin{itemize}
+    \item Led the implementation of an integrated Health Information System using Ozone HIS for Ubuntu Village of Life in Burundi (Africa)
+    \item Set up OpenMRS for patient record management and Odoo for pharmacy, billing, and inventory with both systems synced to automate patient billing for medications, labs, and procedures.
+    \item Implemented Single Sign-On (SSO) using Keycloak for secure access to OpenMRS and Odoo, managing role-based access control through Keycloak to enforce security and permissions across platforms.
+\end{itemize}
+
+\smallskip
+
+\textbf{Health Information System in Mosul, Iraq for \href{https://www.msf.org/}{Médecins Sans Frontières (MSF)}}
+
+\begin{itemize}
+    \item Improved the scripts to generate OpenMRS Digital Forms directly from an Excel sheet.
+    \item Managing OpenMRS' data (Forms, Diagnoses, Laboratory Tests, Medical Procedures, etc.) for the implementation via \href{https://openconceptlab.org/}{Open Concept Lab}
+
+% - Managing <number> of programs in LIME EMR Mosul
+% - Handling the whole lifecycle, from Development to Testing
+% - Managing the project as a whole, from customer needs to delivery
+% 
+\end{itemize}
+
+
+\medskip
+
+\cvevent{Software Engineer (Dev/4), Global Product Support Team}{OpenMRS | \href{https://openmrs.org}{\faGlobe openmrs.org}}{Feb 2021 -- Present}{United States}
+\begin{itemize}
+% - Strong knowledge of OpenMRS Project as a whole, from development to project implementation
+ \item Lead mentor for the Improved Implementer Tools project in GSoC'25
+ \item Building OpenMRS 3, following the Microfrontends Architecture in TypeScript/ JavaScript and the React.js Framework
+ \item Assuming numerous responsibilities: maintenance, review, testing, debugging, feature enhancements, application performance, releases, etc. 
+ \item Help multiple organizations to get overboard and develop for/ in OpenMRS 3.0
+ % \item Member of the OpenMRS' Global Product Support Team as Senior Software Engineer since 2023.
+ \item Lead daily and weekly squad calls with community members, debugging, learning sessions and updates.
+ \item Google Summer of Code Participation: \textbf{GSoC'25 mentor} \textbf{GSoC'24 Admin}, \textbf{GSoC'23 Mentor} and \textbf{GSoC'21 Contributor}
+\end{itemize}
+
+% \smallskip
+% \textbf{Tech Used}: Microfrontends Architecture (single-spa.js), ReactJS, Angular, TypeScript, Carbon Design System, Docker, Webpack, i18next, Responsive web design
+
+\medskip
+
+\cvevent{Software Engineer II}{Mekom Solutions | \href{https://mekomsolutions.com/}{\faGlobe mekomsolutions.com} | \href{https://www.ozone-his.com/}{\faGlobe ozone-his.com}}{Sept 2021 -- Feb 2025}{Singapore}
+\begin{itemize}
+\item Led the frontend Ozone HIS implementation and development for Hôpital du Sacré-Cœur-de-Montréal, France.
+\item Led the frontend implementation and development of the Ozone HIS for the Ministry of Health, Cambodia, project funded by the World Bank
+\item Led the development of an In-patient Ward management dashboard for OpenMRS 3, in collaboration with Partners in Health, USA.
+\item Mentored a Software Engineer through OpenMRS 3 development 
+\item Led the Translation implementation for OpenMRS 3 and OpenMRS Form Engine, using i18next allowing easy language translation (Both LTH and RTL languages) for OpenMRS implementers using transifex.
+\end{itemize}
+
+% \smallskip
+% \textbf{Tech Used}: Microfrontends Architecture (single-spa.js), ReactJS, Angular, TypeScript, Carbon Design System, Docker, GitHub Actions, Webpack, i18next, Responsive web design, Jest, Playwright
+
+% \medskip
+
+% \cvevent{Software Engineer}{Paytm | \href{https://paytm.com/}{\faGlobe paytm.com}}{June 2022 -- June 2024}{Noida, INDIA}
+% \begin{itemize}
+% \item Led Frontend Development for Paytm's Finance Managing system.
+% \item Worked on the Auth Screen for the Paytm App.
+% \item Automated reconciliation and revenue systems for merchants.
+% \item Engineered EDC merchant platform, enhancing payment gateway management.
+% \item Implemented Paytm’s Payment Gateway for Aakash Institute.
+% \end{itemize}
+
+
+
+
+\medskip
+
+
+% \cvsection{Vision}
+
+% \begin{itemize}
+    
+
+% \item Expand my horizons by leaning more toward Project Architecture and Planning
+% \item Dive into the Microfrontends architecture and improve web app performance
+% \item Share and learn more about development insights and ideas with my peers
+
+% \end{itemize}
+
+% \medskip
+% \textbf{Tech Used}: React, TypeScript, Webpack, Jenkins, Android
+
+\cvsection{Skill set}
+
+% % \textbf{Languages}
+% \cvtag{JavaScript}
+% \cvtag{Python}
+% \cvtag{C/C++}
+
+% % \textbf{Core}
+% \cvtag{Data structures}
+% \cvtag{Algorithms}
+% \cvtag{DBMS}
+% \cvtag{Operating System}
+% \cvtag{Distributed systems}
+% \cvtag{Object Oriented Programming}
+% \cvtag{Problem Solving}
+
+
+% % \textbf{Frontend}
+% \cvtag{Micro-frontends}
+% \cvtag{TypeScript}
+% \cvtag{JavaScript}
+% \cvtag{React.js}
+% \cvtag{Next.js}
+% \cvtag{Redux.js}
+% \cvtag{Piral.js}
+% \cvtag{Single Spa.js}
+% \cvtag{Angular}
+% \cvtag{HTML}
+% \cvtag{CSS}
+% \cvtag{Webpack5}
+% \cvtag{Docker}
+% \cvtag{i18next}
+% \cvtag{Web worker}
+% \cvtag{Webpack 5 Module Federation}
+
+
+% % \textbf{Backend}
+% \cvtag{Node.js}
+% \cvtag{Django}
+% \cvtag{Django channels}
+% \cvtag{REST APIs}
+% \cvtag{API Development}
+% \cvtag{MySQL}
+% \cvtag{MongoDB}
+% \cvtag{Web Sockets}
+% \cvtag{Microservices}
+
+% Core Skills
+
+\cvtag{TypeScript}
+\cvtag{JavaScript}
+\cvtag{Python}
+\cvtag{C/C++}
+\cvtag{Data structures \& Algorithms}
+\cvtag{DBMS}
+\cvtag{Operating System}
+\cvtag{Distributed systems}
+\cvtag{Object Oriented Programming}
+
+\smallskip
+
+% Microfrontends Architecture
+
+\cvtag{Microfrontends Architecture}
+\cvtag{Single-spa.js}
+\cvtag{Piral.js}
+
+\smallskip
+
+% 
+% Frontend Frameworks
+ 
+\cvtag{React.js}
+\cvtag{Next.js}
+\cvtag{Redux.js}
+\cvtag{Angular}
+\cvtag{HTML5}
+\cvtag{CSS3}
+\cvtag{i18next}
+\cvtag{Web workers}
+\cvtag{Performance Tuning}
+\cvtag{Safety Optimizations}
+\cvtag{Git}
+
+
+\smallskip
+
+% State Management
+
+\cvtag{Context API}
+\cvtag{Reducer API}
+\cvtag{React Redux}
+\cvtag{Zustand}
+
+\smallskip
+
+% UI Frameworks
+
+\cvtag{Carbon Design System}
+\cvtag{Material UI}
+\cvtag{Ant Design}
+\cvtag{Tailwind}
+\cvtag{Bootstrap}
+
+\smallskip
+
+% Testing Frameworks
+
+\cvtag{Jest}
+\cvtag{React testing library}
+\cvtag{Playwright}
+\cvtag{Enzyme}
+\cvtag{Jest Mock }
+
+\smallskip 
+
+% Bundling and Optimization
+
+\cvtag{Webpack5}
+\cvtag{Webpack 5 Module Federation}
+\cvtag{Turbopack}
+\cvtag{Vite}
+
+\smallskip
+
+% Backend Frameworks
+
+
+\cvtag{Node.js}
+\cvtag{Django}
+\cvtag{Django channels}
+\cvtag{REST APIs}
+\cvtag{API Development}
+\cvtag{MySQL}
+\cvtag{MongoDB}
+\cvtag{Web Sockets}
+\cvtag{AWS}
+
+\smallskip
+
+% Cloud Services
+
+
+\cvtag{Docker}
+\cvtag{Jenkins}
+\cvtag{Akamai}
+\cvtag{Graphana}
+
+\smallskip
+
+% Project Management
+
+\cvtag{JIRA}
+\cvtag{WIKI}
+\cvtag{GitHub}
+\cvtag{GitHub Workspaces}
+\cvtag{Gitpod}
+\cvtag{Bitwarden}
+\cvtag{GitLab}
+
+\smallskip
+
+% AI Assistants
+
+\cvtag{Cursor AI}
+\cvtag{GitHub Copilot}
+\cvtag{Claude}
+\cvtag{GPT}
+
+\smallskip
+
+% Soft Skills
+
+\cvtag{Strong communicator}
+\cvtag{Collaborative}
+\cvtag{Problem solver}
+\cvtag{Adaptable}
+\cvtag{Mentor}
+\cvtag{Empathy}
+\cvtag{Attention to detail}
+\cvtag{Critical thinker}
+
+
+
+
+% \divider
+
+% \cvevent{Student Contributor}{Google Summer of Code 2021 @ OpenMRS}{May 2021 -- Aug 2021}{}
+
+% \divider
+
+% \cvevent{Software Engineer Intern}{Climbax Entertainment Private Limited}{Jun 2020 -- Aug 2020}{New Delhi}
+
+% \divider
+
+% \cvevent{Software Engineer Intern}{Pvot}{May 2020 -- Aug 2020}{Bengaluru}
+
+
+% \cvsection{Projects}
+
+% \cvevent{OpenMRS 3.0}{OpenMRS}{3 years}{}
+% \begin{itemize}
+% \item Details
+% \end{itemize}
+
+% \divider
+
+% \cvevent{Ozone for Ministry of Health, Cambodia (Funded by the World Bank)}{Mekom Solutions}{6 months}{}
+% A short abstract would also work.
+
+% \medskip
+
+% \cvsection{A Day of My Life}
+
+% % Adapted from @Jake's answer from http://tex.stackexchange.com/a/82729/226
+% % \wheelchart{outer radius}{inner radius}{
+% % comma-separated list of value/text width/color/detail}
+% \wheelchart{1.5cm}{0.5cm}{%
+%   6/8em/accent!30/{Sleep,\\beautiful sleep},
+%   3/8em/accent!40/Hopeful novelist by night,
+%   8/8em/accent!60/Daytime job,
+%   2/10em/accent/Sports and relaxation,
+%   5/6em/accent!20/Spending time with family
+% }
+
+% use ONLY \newpage if you want to force a page break for
+% ONLY the current column
+% \newpage
+
+% \cvsection{Publications}
+
+% %% Specify your last name(s) and first name(s) as given in the .bib to automatically bold your own name in the publications list.
+% %% One caveat: You need to write \bibnamedelima where there's a space in your name for this to work properly; or write \bibnamedelimi if you use initials in the .bib
+% %% You can specify multiple names, especially if you have changed your name or if you need to highlight multiple authors.
+% \mynames{Lim/Lian\bibnamedelima Tze,
+%   Wong/Lian\bibnamedelima Tze,
+%   Lim/Tracy,
+%   Lim/L.\bibnamedelimi T.}
+% %% MAKE SURE THERE IS NO SPACE AFTER THE FINAL NAME IN YOUR \mynames LIST
+
+% \nocite{*}
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faBook}{Books}},type=book]
+
+% \divider
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faFile*[regular]}{Journal Articles}},type=article]
+
+% \divider
+
+% \printbibliography[heading=pubtype,title={\printinfo{\faUsers}{Conference Proceedings}},type=inproceedings]
+
+
+
+
+
+% \cvsection{Languages}
+
+% \cvskill{English}{5}
+% \divider
+
+% \cvskill{Spanish}{4}
+% \divider
+
+% \cvskill{German}{3.5} %% Supports X.5 values.
+
+%% Yeah I didn't spend too much time making all the
+%% spacing consistent... sorry. Use \smallskip, \medskip,
+%% \bigskip, \vspace etc to make adjustments.
+\medskip
+
+% \divider
+
+% \cvsection{Referees}
+
+% % \cvref{name}{email}{mailing address}
+% \cvref{Prof.\ Alpha Beta}{Institute}{a.beta@university.edu}
+% {Address Line 1\\Address line 2}
+
+% \divider
+
+% \cvref{Prof.\ Gamma Delta}{Institute}{g.delta@university.edu}
+% {Address Line 1\\Address line 2}
+
+
+\end{paracol}
+
+
+\end{document}
