@@ -38,23 +38,67 @@
   ],
   "navigation": [
     { "visible": true, "id": "about", "label": "About", "targetId": "about" },
-    { "visible": true, "id": "experience", "label": "Experience", "targetId": "experience" },
-    { "visible": true, "id": "skills", "label": "Skills", "targetId": "skills" },
-    { "visible": true, "id": "leadership", "label": "Leadership", "targetId": "leadership" },
-    { "visible": true, "id": "achievements", "label": "Achievements", "targetId": "achievements" },
-    { "visible": true, "id": "events", "label": "Events", "targetId": "events" },
-    { "visible": true, "id": "projects", "label": "Projects", "targetId": "projects" },
-    { "visible": true, "id": "contact", "label": "Contact", "targetId": "contact" }
+    {
+      "visible": true,
+      "id": "experience",
+      "label": "Experience",
+      "targetId": "experience"
+    },
+    {
+      "visible": true,
+      "id": "skills",
+      "label": "Skills",
+      "targetId": "skills"
+    },
+    {
+      "visible": true,
+      "id": "leadership",
+      "label": "Leadership",
+      "targetId": "leadership"
+    },
+    {
+      "visible": true,
+      "id": "achievements",
+      "label": "Achievements",
+      "targetId": "achievements"
+    },
+    {
+      "visible": true,
+      "id": "events",
+      "label": "Events",
+      "targetId": "events"
+    },
+    {
+      "visible": true,
+      "id": "projects",
+      "label": "Projects",
+      "targetId": "projects"
+    },
+    {
+      "visible": true,
+      "id": "contact",
+      "label": "Contact",
+      "targetId": "contact"
+    }
   ],
   "hero": {
     "visible": true,
     "headline": "Hi, I’m",
     "highlightName": "Vineet Sharma",
     "subtitle": "Senior Frontend Engineer with 4+ years building microfrontend architectures and digital health products.",
+    "typewriter": {
+      "visible": true,
+      "options": [
+        "Vineet Sharma",
+        "<vasharma05 />",
+        "Senior Software Engineer, etc."
+      ]
+    },
     "primaryCta": {
       "visible": true,
       "label": "Hire Me",
-      "targetId": "contact"
+      "targetId": "contact",
+      "resumeUrl": "/resume.pdf"
     }
   },
   "about": {
@@ -643,7 +687,11 @@
           "options": [
             { "visible": true, "value": "portfolio", "label": "Portfolio" },
             { "visible": true, "value": "saas", "label": "SaaS" },
-            { "visible": true, "value": "marketing", "label": "Marketing site" },
+            {
+              "visible": true,
+              "value": "marketing",
+              "label": "Marketing site"
+            },
             { "visible": true, "value": "other", "label": "Other" }
           ]
         },
@@ -672,6 +720,3 @@
     }
   }
 }
-
-
-

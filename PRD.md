@@ -1,7 +1,7 @@
 # Product Requirements Document: Frontend Developer Portfolio Website
 
-**Version:** 1.1  
-**Status:** Ready for implementation  
+**Version:** 1.2  
+**Status:** In development / Implemented  
 **Last updated:** February 2025
 
 ---
@@ -21,7 +21,7 @@ All content (copy, links, lists) should be loaded from a single **runtime-fetche
   - Subtle gradients are allowed for accents and CTAs, but surfaces remain mostly flat.
 - **Layout**:
   - Clear visual hierarchy, generous spacing, easy-to-scan sections.
-  - Cards for Experience, Skills, Projects, Leadership, etc.
+  - Cards for Experience, Events, Projects; list view for Leadership and Achievements; Skills use dividers (no cards).
 - **Motion**:
   - Smooth scroll between sections.
   - Subtle fade/slide-in on scroll (no blur-based animations).
@@ -37,30 +37,35 @@ All sections live on one page with smooth scroll navigation.
 ### 3.1 Hero / Navigation Bar
 
 - Sticky top nav.
-- **Left:** Name or logo (links to hero/top).
-- **Center/Right:** Navigation links: About, Experience, Skills, Leadership, Achievements, Events, Projects, Contact.
-- **CTA:** “Hire Me” button (gradient accent; links to Contact/email).
+- **Left:** Name or logo (links to hero/top); larger type for prominence.
+- **Center/Right:** Navigation links: About, Experience, Skills, Leadership, Achievements, Events, Projects, Contact. **Smooth scroll** to corresponding section on click.
+- **CTA:** “Hire Me” button: when `resumeUrl` is set in `content.json` it **downloads the resume**; otherwise scrolls to Contact.
 - **Social:** LinkedIn, GitHub, Twitter/X as icons (with accessible labels).
 - **Mobile:** Hamburger menu for nav and social.
 
 ### 3.2 Hero Section
 
-- Large greeting headline with animated gradient text: e.g. “Hi, I’m <name>”.
-- Short tagline (e.g. Frontend Developer focus from JSON file).
+- **Height:** Min 90% viewport height (90vh); content vertically centered with scroll-down affordance.
+- Large greeting headline with animated gradient text: e.g. “Hi, I’m <name>” — **large, responsive typography** (scales up to ~7xl on large screens).
+- Short tagline (e.g. Frontend Developer focus from JSON file); **increased font size** for readability.
+- **Scroll indicator:** Vertical arrow + “Scroll” label below hero, linking to About section (smooth scroll).
+- CTA button sized for prominence (larger padding and text).
 - Background: Subtle animated gradient orbs or mesh (CSS-only; no blur animation for performance).
 
 ### 3.3 About Me
 
-- Brief bio paragraph.
+- Brief bio paragraph with **typewriter effect** on the first paragraph (client-side component).
 - Profile photo/avatar (placeholder or image).
 - Tech stack as “glowing” pills/badges with specific logo (e.g. React, TypeScript, Tailwind, etc.).
 - Layout: responsive (e.g. stacked on mobile, side-by-side on desktop).
 
 ### 3.4 Skills
 
-- Subdivided by **domains** (e.g. Frontend, Backend & Data, Tools & Workflow, Testing & Quality).
-- Each domain: title + list of skills as pills/badges (with optional logos/icons).
-- Responsive grid (e.g. 1 col mobile, 2 cols desktop).
+- **Layout:** No cards; **dividers** between the two columns and between subsections within each column. Two-column grid on desktop, stacked on mobile.
+- **Flow:** Subsections from `content.json` flow **left-to-right** (alternating columns: 1st domain left, 2nd right, 3rd left, etc.).
+- Subdivided by **domains** (e.g. Frontend, Backend & Data, Tools & Workflow, Testing & Quality). Each domain: **center-aligned** title + list of skills as pills/badges.
+- **Icons:** **Font Awesome** (solid + brands) for skill pills where a mapping exists; default icon for unmapped skills.
+- **Spacing:** Generous padding (section, between divider and title, between subsections); larger pill padding and gap between pills; subsection titles and pills use larger type to avoid a cramped feel.
 - All content loaded from `content.json`.
 
 ### 3.5 Experience (Timeline)
@@ -72,13 +77,13 @@ All sections live on one page with smooth scroll navigation.
 
 ### 3.6 Leadership
 
-- Cards (e.g. 3-col grid on desktop, 1 col on mobile).
+- **List view** (no cards): single column, max-width container; items separated by bottom borders.
 - Each: role title, context (e.g. company/program, dates), short description.
 - All entries loaded from `content.json`.
 
 ### 3.7 Achievements
 
-- List or grid of items.
+- **List view** (no cards): single column, max-width container; items separated by bottom borders.
 - Each: title, issuer/organization, date, optional short description.
 - All entries loaded from `content.json`.
 
@@ -95,25 +100,20 @@ All sections live on one page with smooth scroll navigation.
 - Hover: clear, accessible hover states (e.g. subtle scale/outline/underline; no heavy glow).
 - 4–6 projects loaded from `content.json`.
 
-### 3.10 Footer / Contact
+### 3.10 Contact
 
 - “Let’s Work Together” (or similar) heading.
 - Email link (mailto).
-- **Contact form**:
-  - **Fields (all required unless otherwise specified):**
-    - Name
-    - Email
-    - Subject
-    - Company
-    - Project type (dropdown: Portfolio, SaaS, Marketing site, Other)
-    - Budget range
-    - Timeline
-    - Message
-  - On submit:
-    - Opens the user’s default mail client via `mailto:` with **prefilled subject and body**. User must press **Send** manually.
-    - Sends data to a **Google Sheet** via a Google Apps Script HTTP endpoint (implementation in a small backend/script; not part of the initial static-only constraints).
-- Social links repeated (LinkedIn, GitHub, Twitter/X).
-- Copyright line.
+- **Contact form** (see Contact section component):
+  - **Fields (all required unless otherwise specified):** Name, Email, Subject, Company, Project type (dropdown), Budget range, Timeline, Message.
+  - On submit: opens default mail client via `mailto:` with prefilled subject and body; user must press Send manually. (Google Sheet integration via Apps Script is out of scope for initial static build.)
+- Contact section and form implemented; form uses larger, readable text and padding.
+
+### 3.11 Footer
+
+- **Copyright line** (e.g. “© {year} {name}. All rights reserved.”).
+- **Social links** repeated (LinkedIn, GitHub, etc.) with accessible labels.
+- Full-width border-top; section padding and readable font size.
 
 ---
 
@@ -128,7 +128,7 @@ All sections live on one page with smooth scroll navigation.
 | **Content**        | All content from a single runtime-fetched `/content.json` file (in `public/`), including links and image paths       |
 | **Images**         | Local images in the repo for profile photo, project thumbnails, and selected skill logos                             |
 | **Theme**          | Light ↔ Dark toggle; initial theme follows system; subsequent choice stored in `localStorage`                        |
-| **Behavior**       | Smooth scroll for in-page links; Intersection Observer for scroll-triggered fade-in (translate/opacity only)         |
+| **Behavior**       | **Smooth scroll** for in-page links (CSS `scroll-behavior: smooth`); **Intersection Observer** for scroll-triggered fade-in (translate/opacity only) on sections |
 | **Responsiveness** | Mobile, tablet, desktop; nav collapses to menu on small screens                                                      |
 | **Performance**    | Static assets only (hosted as static Next.js site); avoid animating blur; lightweight animations and effects         |
 | **Accessibility**  | Semantic HTML; Radix-based components; aria-labels; focus states; sufficient color contrast (aim for WCAG AA)        |
@@ -161,16 +161,19 @@ All sections live on one page with smooth scroll navigation.
 | ------- | -------- | ------------------------------------------------------------------------------------------------- |
 | 1.0     | Feb 2025 | Initial PRD from conversation: full scope, liquid glass, contrast fixes, all sections.            |
 | 1.1     | Feb 2025 | Switched to Next.js + Tailwind + shadcn/ui, flat minimal cards, JSON-based content, theming, SEO. |
+| 1.2     | Feb 2025 | Implemented: typewriter (About), hero 90vh + scroll arrow, CTA resume/contact, smooth scroll nav, Skills (dividers, Font Awesome, center align, left-to-right flow, padding), Leadership/Achievements list view, Contact + Footer, section fade animations, site-wide and hero typography increases. |
 
 ---
 
-Next steps:
+## 8. Implemented Features (v1.2)
 
-- A typewrite effect for about me section
-- Clicking on the CTA button should scroll download the resume
-- Clicking on the button in navigation bar should scroll smoothly to the corresponding section
-- The Hero section should take the 90% of the screen height and then there should be a vertical arrow pointing down to the About section
-- The Skills domains should be one below another in a grid of 2 columns, with the skill items in a row below the domain name, all of that in center align
-- Can we use Font Awesome for the icons in the Skills section?
-- Missing contact and footer section
-- Animations
+- **About:** Typewriter effect on first paragraph.
+- **Hero:** Min 90vh height; large responsive headline/subtitle/CTA; scroll-down arrow to About.
+- **CTA:** “Hire Me” downloads resume when `hero.primaryCta.resumeUrl` is set in `content.json`; otherwise scrolls to Contact.
+- **Navigation:** Smooth scroll to section on nav link click.
+- **Skills:** Two-column layout with dividers (no cards); subsections flow left-to-right; center-aligned titles and pills; Font Awesome icons; generous padding and spacing; larger subsection and pill typography.
+- **Leadership & Achievements:** List view with bottom-border separators (no cards).
+- **Contact:** Section and form present; mailto submit.
+- **Footer:** Copyright and social links.
+- **Animations:** Scroll-triggered fade-in (Intersection Observer) on sections.
+- **Typography:** Increased font sizes site-wide and prominently in hero (nav, section titles, body, forms, footer).

@@ -54,12 +54,12 @@ export function ContactSection({ contact, profile }: ContactSectionProps) {
         <p className="section-subtitle">{contact.copy.text}</p>
       )}
       <div className="mx-auto flex max-w-3xl flex-col gap-6 md:flex-row">
-        <div className="card flex-1 text-sm">
+        <div className="card flex-1 text-base">
           <form onSubmit={handleSubmit} className="space-y-3">
             {contact.form.fields
               .filter((field) => field.visible)
               .map((field) => (
-                <div key={field.id} className="text-xs">
+                <div key={field.id} className="text-sm">
                   <label
                     htmlFor={field.id}
                     className="mb-1 block font-medium text-[var(--foreground)]"
@@ -74,7 +74,7 @@ export function ContactSection({ contact, profile }: ContactSectionProps) {
                       id={field.id}
                       name={field.id}
                       required={field.required}
-                      className="w-full rounded-md border border-[var(--border)] bg-[var(--background)] px-2 py-1.5 text-xs text-[var(--foreground)] outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
+                      className="w-full rounded-md border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
                       rows={4}
                     />
                   ) : field.type === "select" ? (
@@ -82,7 +82,7 @@ export function ContactSection({ contact, profile }: ContactSectionProps) {
                       id={field.id}
                       name={field.id}
                       required={field.required}
-                      className="w-full rounded-md border border-[var(--border)] bg-[var(--background)] px-2 py-1.5 text-xs text-[var(--foreground)] outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
+                      className="w-full rounded-md border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
                     >
                       <option value="">Select...</option>
                       {field.options
@@ -99,22 +99,22 @@ export function ContactSection({ contact, profile }: ContactSectionProps) {
                       name={field.id}
                       type={field.type}
                       required={field.required}
-                      className="w-full rounded-md border border-[var(--border)] bg-[var(--background)] px-2 py-1.5 text-xs text-[var(--foreground)] outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
+                      className="w-full rounded-md border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
                     />
                   )}
                 </div>
               ))}
             <button
               type="submit"
-              className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-zinc-900 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+              className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
             >
               Send message
             </button>
           </form>
         </div>
-        <div className="card flex-1 text-sm">
+        <div className="card flex-1 text-base">
           {contact.email.visible && (
-            <p className="text-xs text-[var(--muted)]">
+            <p className="text-sm text-[var(--muted)]">
               Email{" "}
               <a
                 href={`mailto:${contact.email.address}`}
@@ -127,7 +127,7 @@ export function ContactSection({ contact, profile }: ContactSectionProps) {
             </p>
           )}
           {profile.visible && (
-            <p className="mt-4 text-xs text-[var(--muted)]">
+            <p className="mt-4 text-sm text-[var(--muted)]">
               Based in {profile.location}. Open to remote and hybrid roles
               focused on frontend, microfrontends, and digital health.
             </p>
