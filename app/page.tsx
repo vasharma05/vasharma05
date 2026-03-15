@@ -7,6 +7,8 @@ import { SectionFade } from "@/components/section-fade";
 import { Footer } from "@/components/footer";
 import { HeroTitle } from "@/components/hero-title";
 import { EducationLogo } from "@/components/education-logo";
+import { HeroConnect } from "@/components/hero-connect";
+import { AskSection } from "@/components/ask-section";
 import { getContent } from "@/lib/content";
 import { withBasePath } from "@/lib/base-path";
 
@@ -113,27 +115,60 @@ export default async function Home() {
                     ))}
                 </ul>
               )}
-              {hero.primaryCta.visible && (
-                <div className="pt-2">
-                  {"resumeUrl" in hero.primaryCta &&
-                  (hero.primaryCta as { resumeUrl?: string }).resumeUrl ? (
-                    <a
-                      href={withBasePath(
-                        (hero.primaryCta as { resumeUrl: string }).resumeUrl,
+              {(hero.primaryCta.visible ||
+                ("connect" in hero &&
+                  hero.connect?.visible &&
+                  Array.isArray(hero.connect?.links) &&
+                  (hero.connect as { links: { visible?: boolean }[] }).links.some(
+                    (l) => l.visible,
+                  ))) && (
+                <div className="flex flex-wrap items-center gap-4 pt-2">
+                  {hero.primaryCta.visible && (
+                    <>
+                      {"resumeUrl" in hero.primaryCta &&
+                      (hero.primaryCta as { resumeUrl?: string }).resumeUrl ? (
+                        <a
+                          href={withBasePath(
+                            (hero.primaryCta as { resumeUrl: string }).resumeUrl,
+                          )}
+                          download
+                          className="inline-flex items-center rounded-full border-2 border-[var(--foreground)] bg-[var(--foreground)] px-6 py-3 text-sm font-semibold text-[var(--background)] shadow-md transition hover:bg-transparent hover:text-[var(--foreground)] dark:border-[var(--foreground)] dark:bg-[var(--foreground)] dark:text-[var(--background)] dark:hover:bg-transparent dark:hover:text-[var(--foreground)] sm:text-base"
+                        >
+                          {hero.primaryCta.label}
+                        </a>
+                      ) : (
+                        <a
+                          href={`#${hero.primaryCta.targetId}`}
+                          className="inline-flex items-center rounded-full border-2 border-[var(--foreground)] bg-[var(--foreground)] px-6 py-3 text-sm font-semibold text-[var(--background)] shadow-md transition hover:bg-transparent hover:text-[var(--foreground)] dark:border-[var(--foreground)] dark:bg-[var(--foreground)] dark:text-[var(--background)] dark:hover:bg-transparent dark:hover:text-[var(--foreground)] sm:text-base"
+                        >
+                          {hero.primaryCta.label}
+                        </a>
                       )}
-                      download
-                      className="inline-flex items-center rounded-full bg-zinc-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 sm:text-base"
-                    >
-                      {hero.primaryCta.label}
-                    </a>
-                  ) : (
-                    <a
-                      href={`#${hero.primaryCta.targetId}`}
-                      className="inline-flex items-center rounded-full bg-zinc-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 sm:text-base"
-                    >
-                      {hero.primaryCta.label}
-                    </a>
+                    </>
                   )}
+                  {"connect" in hero &&
+                    hero.connect?.visible &&
+                    Array.isArray(hero.connect?.links) &&
+                    (hero.connect as { links: { visible?: boolean }[] }).links.some(
+                      (l) => l.visible,
+                    ) && (
+                      <>
+                        {hero.primaryCta.visible && (
+                          <span
+                            aria-hidden
+                            className="h-8 w-px shrink-0 bg-[var(--border)]"
+                          />
+                        )}
+                        <HeroConnect
+                          label={(hero.connect as { label: string }).label}
+                          links={
+                            (hero.connect as {
+                              links: { visible?: boolean; id: string; label: string; url: string }[];
+                            }).links
+                          }
+                        />
+                      </>
+                    )}
                 </div>
               )}
             </div>
@@ -668,6 +703,11 @@ export default async function Home() {
             </section>
           </SectionFade>
         )}
+
+        {/* Ask (uses /api/ask; requires server: next dev / next start or Vercel) */}
+        <SectionFade>
+          <AskSection />
+        </SectionFade>
 
         {/* Contact */}
         {contact.visible && (

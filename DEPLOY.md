@@ -27,3 +27,10 @@ Replace `Portfolio` with your repo name if different.
 ## 4. Custom domain (optional)
 
 To use a custom domain (e.g. vasharma05.com), add it under **Settings → Pages → Custom domain** and configure DNS. The site will still be built with the repo base path; for root at a custom domain you’d need a separate build without base path (see earlier DEPLOY notes if you have them).
+
+## 5. “Ask” section (Gemini 2.0 Flash)
+
+The **Ask about my experience** section calls `POST /api/ask`, which uses **Gemini 2.0 Flash** and `content.json` as context. This is a **server** route: it does **not** run on the static GitHub Pages build.
+
+- **Local:** Run `next dev` or `next start` (not a static export). Set `GEMINI_API_KEY` in `.env.local`.
+- **Hosted:** Deploy to **Vercel** (or any Node server) so `/api/ask` is available. Set `GEMINI_API_KEY` in the host’s environment variables. For a static-only deploy (e.g. GitHub Pages), the Ask UI will appear but the request will fail unless you point it at a separate backend that implements the same API.

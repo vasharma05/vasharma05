@@ -82,6 +82,12 @@
     },
     {
       "visible": true,
+      "id": "ask",
+      "label": "Ask",
+      "targetId": "ask"
+    },
+    {
+      "visible": true,
       "id": "contact",
       "label": "Contact",
       "targetId": "contact"
@@ -106,6 +112,30 @@
       "label": "Hire Me",
       "targetId": "contact",
       "resumeUrl": "/resume.pdf"
+    },
+    "connect": {
+      "visible": true,
+      "label": "Connect with me on",
+      "links": [
+        {
+          "visible": true,
+          "id": "linkedin",
+          "label": "LinkedIn",
+          "url": "https://www.linkedin.com/in/vasharma05"
+        },
+        {
+          "visible": true,
+          "id": "reddit",
+          "label": "Reddit",
+          "url": "https://www.reddit.com/user/vasharma05"
+        },
+        {
+          "visible": true,
+          "id": "dailydev",
+          "label": "Daily.dev",
+          "url": "https://app.daily.dev/vasharma05"
+        }
+      ]
     }
   },
   "about": {
