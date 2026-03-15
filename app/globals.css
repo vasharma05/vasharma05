@@ -90,8 +90,8 @@ body {
   margin-left: auto;
   margin-right: auto;
   max-width: 56rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 .timeline::before {
@@ -99,16 +99,14 @@ body {
   position: absolute;
   top: 0.5rem;
   bottom: 0.5rem;
-  left: 50%;
+  left: 0.5rem;
   width: 2px;
   background-color: var(--border);
-  transform: translateX(-50%);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) {
   .timeline::before {
     left: 0.75rem;
-    transform: translateX(0);
   }
 }
 
@@ -128,18 +126,13 @@ body {
   box-shadow: 0 0 0 4px rgba(148, 163, 184, 0.35);
 }
 
-@media (min-width: 769px) {
-  .timeline-item-left .timeline-dot {
-    left: calc(50% - 5px);
-  }
-  .timeline-item-right .timeline-dot {
-    left: calc(50% - 5px);
-  }
+.timeline-dot {
+  left: calc(0.5rem - 5px);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 769px) {
   .timeline-dot {
-    left: 0.25rem;
+    left: calc(0.75rem - 5px);
   }
 }
 
@@ -149,17 +142,21 @@ body {
 
 @media (min-width: 769px) {
   .timeline-card {
-    width: 50%;
+    width: calc(100% - 2.5rem);
+    margin-left: 2.5rem;
+    padding-left: 0;
+    padding-right: 0;
   }
+}
 
-  .timeline-item-left .timeline-card {
-    padding-right: 1.5rem;
-    margin-left: 0;
-  }
+/* Experience card: more padding and spacing so content doesn’t mix */
+.experience-card {
+  padding: 1.75rem 1.5rem;
+}
 
-  .timeline-item-right .timeline-card {
-    padding-left: 1.5rem;
-    margin-left: auto;
+@media (min-width: 640px) {
+  .experience-card {
+    padding: 2rem 1.75rem;
   }
 }
 

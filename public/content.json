@@ -46,6 +46,12 @@
     },
     {
       "visible": true,
+      "id": "volunteer",
+      "label": "Volunteer",
+      "targetId": "volunteer"
+    },
+    {
+      "visible": true,
       "id": "skills",
       "label": "Skills",
       "targetId": "skills"
@@ -83,15 +89,16 @@
   ],
   "hero": {
     "visible": true,
-    "headline": "Hi, I’m",
+    "headline": "Hi, I'm",
     "highlightName": "Vineet Sharma",
-    "subtitle": "Senior Frontend Engineer with 4+ years building microfrontend architectures and digital health products.",
+    "subtitle": "4+ years of experience in building microfrontend architectures and digital health products.",
     "typewriter": {
       "visible": true,
       "options": [
         "Vineet Sharma",
         "<vasharma05 />",
-        "Senior Software Engineer, etc."
+        "Senior Software Engineer",
+        "Open-source Project Maintainer at OpenMRS"
       ]
     },
     "primaryCta": {
@@ -102,7 +109,7 @@
     }
   },
   "about": {
-    "visible": true,
+    "visible": false,
     "title": "About Me",
     "summaryItems": [
       {
@@ -132,14 +139,19 @@
         "institution": "National Institute of Technology, Hamirpur",
         "location": "Hamirpur, Himachal Pradesh",
         "period": "Aug 2017 – Jun 2022",
+        "logo": {
+          "visible": true,
+          "src": "/images/nit-hamirpur-logo.png",
+          "alt": "NIT Hamirpur"
+        },
         "details": [
           {
             "visible": true,
-            "text": "Master of Technology (M.Tech.), CGPA 9.80 / 10"
+            "text": "Master of Technology (M.Tech.): CGPA 9.80 / 10"
           },
           {
             "visible": true,
-            "text": "Bachelor of Technology (B.Tech.), CGPA 9.43 / 10"
+            "text": "Bachelor of Technology (B.Tech.): CGPA 9.43 / 10"
           }
         ]
       }
@@ -154,6 +166,20 @@
         "role": "Software Engineer III",
         "location": "Toronto, Canada",
         "period": "Feb 2025 – Present",
+        "logo": {
+          "visible": true,
+          "src": "/images/madiro-logo.png",
+          "alt": "Madiro.org"
+        },
+        "positions": [
+          {
+            "visible": true,
+            "type": "role",
+            "title": "Software Engineer III",
+            "period": "Feb 2025 – Present",
+            "responsibilities": []
+          }
+        ],
         "primaryLink": {
           "visible": true,
           "label": "madiro.org",
@@ -200,6 +226,48 @@
         "role": "Software Engineer (Dev/4), Global Product Support Team",
         "location": "United States (remote)",
         "period": "Feb 2021 – Present",
+        "logo": {
+          "visible": true,
+          "src": "/images/openmrs-logo.png",
+          "alt": "OpenMRS"
+        },
+        "positions": [
+          {
+            "visible": true,
+            "type": "role",
+            "title": "Global Product Support Team",
+            "period": "Dec 2023 – Present",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "progression",
+            "title": "Software Engineer (Dev/4)",
+            "period": "Dec 2023 – Present",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "progression",
+            "title": "Software Engineer (Dev/3)",
+            "period": "Oct 2022 – Dec 2023",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "progression",
+            "title": "Software Engineer (Dev/2)",
+            "period": "Sep 2021 – Oct 2022",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "progression",
+            "title": "Software Engineer (Dev/1)",
+            "period": "Feb 2021 – Aug 2021",
+            "responsibilities": []
+          }
+        ],
         "primaryLink": {
           "visible": true,
           "label": "openmrs.org",
@@ -238,6 +306,27 @@
         "role": "Software Engineer II",
         "location": "Singapore (remote)",
         "period": "Sep 2021 – Feb 2025",
+        "logo": {
+          "visible": true,
+          "src": "/images/mekom-logo.png",
+          "alt": "Mekom Solutions"
+        },
+        "positions": [
+          {
+            "visible": true,
+            "type": "progression",
+            "title": "Software Engineer II",
+            "period": "Jan 2024 – Feb 2025",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "progression",
+            "title": "Software Engineer I",
+            "period": "Sep 2021 – Dec 2023",
+            "responsibilities": []
+          }
+        ],
         "primaryLink": {
           "visible": true,
           "label": "mekomsolutions.com",
@@ -270,6 +359,53 @@
           {
             "visible": true,
             "text": "Led translation implementation for OpenMRS 3 and OpenMRS Form Engine using i18next, enabling easy LTR/RTL language support via Transifex."
+          }
+        ]
+      }
+    ]
+  },
+  "volunteer": {
+    "visible": true,
+    "items": [
+      {
+        "visible": true,
+        "company": "Google Summer of Code (OpenMRS)",
+        "role": "Mentor / Org Admin / Contributor",
+        "location": "Remote",
+        "period": "Feb 2021 – Oct 2025",
+        "logo": {
+          "visible": true,
+          "src": "/images/gsoc-logo.png",
+          "alt": "Google Summer of Code"
+        },
+        "positions": [
+          {
+            "visible": true,
+            "type": "role",
+            "title": "Mentor 2025 – OpenMRS",
+            "period": "May 2025 – Aug 2025",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "role",
+            "title": "Org Admin 2024 – OpenMRS",
+            "period": "Jan 2024 – Oct 2024",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "role",
+            "title": "Mentor 2023 – OpenMRS",
+            "period": "May 2023 – Aug 2023",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "role",
+            "title": "Contributor – OpenMRS",
+            "period": "Feb 2021 – Aug 2021",
+            "responsibilities": []
           }
         ]
       }
