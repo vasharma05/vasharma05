@@ -33,9 +33,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # No base path: site is served at root for custom domain (e.g. vasharma05.com).
+      # Project site is at username.github.io/REPO_NAME/ — assets must be under that path.
+      # NEXT_PUBLIC_BASE_PATH must match the repo name (e.g. /Portfolio).
       - name: Build static export
         run: npm run build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /${{ github.event.repository.name }}
 
       - name: Add .nojekyll
         run: touch out/.nojekyll
