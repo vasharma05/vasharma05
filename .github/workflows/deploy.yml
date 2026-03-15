@@ -34,7 +34,6 @@ jobs:
         run: npm ci
 
       # Project site is at username.github.io/REPO_NAME/ — assets must be under that path.
-      # NEXT_PUBLIC_BASE_PATH must match the repo name (e.g. /Portfolio).
       - name: Build static export
         run: npm run build
         env:

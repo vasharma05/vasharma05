@@ -8,6 +8,7 @@ import { Footer } from "@/components/footer";
 import { HeroTitle } from "@/components/hero-title";
 import { EducationLogo } from "@/components/education-logo";
 import { getContent } from "@/lib/content";
+import { withBasePath } from "@/lib/base-path";
 
 export default async function Home() {
   const content = await getContent();
@@ -117,9 +118,9 @@ export default async function Home() {
                   {"resumeUrl" in hero.primaryCta &&
                   (hero.primaryCta as { resumeUrl?: string }).resumeUrl ? (
                     <a
-                      href={
-                        (hero.primaryCta as { resumeUrl: string }).resumeUrl
-                      }
+                      href={withBasePath(
+                        (hero.primaryCta as { resumeUrl: string }).resumeUrl,
+                      )}
                       download
                       className="inline-flex items-center rounded-full bg-zinc-900 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200 sm:text-base"
                     >
@@ -180,7 +181,7 @@ export default async function Home() {
                           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
                             {showExpLogo && (
                               <EducationLogo
-                                src={expLogo!.src!}
+                                src={withBasePath(expLogo!.src!)}
                                 alt={expLogo!.alt ?? item.company ?? "Logo"}
                                 className="h-14 w-14 object-contain sm:h-16 sm:w-16"
                               />
@@ -362,13 +363,13 @@ export default async function Home() {
                         <div className="timeline-dot" />
                         <article className="timeline-card card experience-card text-base">
                           <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
-                            {showExpLogo && (
-                              <EducationLogo
-                                src={expLogo!.src!}
-                                alt={expLogo!.alt ?? (item.company as string) ?? "Logo"}
-                                className="h-14 w-14 object-contain sm:h-16 sm:w-16"
-                              />
-                            )}
+                      {showExpLogo && (
+                        <EducationLogo
+                          src={withBasePath(expLogo!.src!)}
+                          alt={expLogo!.alt ?? (item.company as string) ?? "Logo"}
+                          className="h-14 w-14 object-contain sm:h-16 sm:w-16"
+                        />
+                      )}
                             <div className="min-w-0 flex-1 space-y-0">
                               <div className="flex flex-wrap items-baseline justify-between gap-2 pb-3">
                                 <div>
@@ -482,7 +483,7 @@ export default async function Home() {
                     >
                       {showLogo && (
                         <EducationLogo
-                          src={logo!.src!}
+                          src={withBasePath(logo!.src!)}
                           alt={logo!.alt ?? item.institution ?? "Logo"}
                           className="h-20 w-20 object-contain sm:h-24 sm:w-24"
                         />
