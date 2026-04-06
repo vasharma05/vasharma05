@@ -19,18 +19,12 @@ export function ContactSection({ contact, profile }: ContactSectionProps) {
     const email = data.get("email") || "";
     const subject = data.get("subject") || "";
     const company = data.get("company") || "";
-    const projectType = data.get("projectType") || "";
-    const budget = data.get("budget") || "";
-    const timeline = data.get("timeline") || "";
     const message = data.get("message") || "";
 
     const lines = [
       `Name: ${name}`,
       `Email: ${email}`,
       `Company: ${company}`,
-      `Project type: ${projectType}`,
-      `Budget range: ${budget}`,
-      `Timeline: ${timeline}`,
       "",
       "Message:",
       message,

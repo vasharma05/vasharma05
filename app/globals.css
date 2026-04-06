@@ -160,3 +160,10 @@ body {
   }
 }
 
+/* In-page jump targets: highlight when focused after clicking a project tag */
+.project-card-focusable:focus {
+  outline: 2px solid var(--foreground);
+  outline-offset: 4px;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+

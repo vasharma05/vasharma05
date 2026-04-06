@@ -1,7 +1,7 @@
 "use client";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLinkedin, faReddit } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faReddit } from "@fortawesome/free-brands-svg-icons";
 
 type ConnectLink = { id: string; label: string; url: string; visible?: boolean };
 
@@ -24,6 +24,7 @@ function DailyDevIcon({ className }: { className?: string }) {
 }
 
 const ICON_MAP: Record<string, { type: "fa"; icon: typeof faLinkedin } | { type: "svg"; Icon: React.ComponentType<{ className?: string }> }> = {
+  github: { type: "fa", icon: faGithub },
   linkedin: { type: "fa", icon: faLinkedin },
   reddit: { type: "fa", icon: faReddit },
   dailydev: { type: "svg", Icon: DailyDevIcon },

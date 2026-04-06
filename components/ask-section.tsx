@@ -2,15 +2,25 @@
 
 import { useState } from "react";
 
+const SUGGESTED_QUESTIONS = [
+  "Who is Vineet Sharma?",
+  "What's your experience with microfrontends?",
+  "Which companies have you worked at?",
+  "What are your key skills?",
+  "Tell me about your OpenMRS work.",
+  "What's your education background?",
+];
+
 export function AskSection() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  async function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    if (!question.trim() || loading) return;
+  async function ask(q: string) {
+    const trimmed = q.trim();
+    if (!trimmed || loading) return;
+    setQuestion(trimmed);
     setError(null);
     setAnswer(null);
     setLoading(true);
@@ -19,7 +29,7 @@ export function AskSection() {
       const res = await fetch(`${base}/api/ask`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question: question.trim() }),
+        body: JSON.stringify({ question: trimmed }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -32,6 +42,15 @@ export function AskSection() {
     } finally {
       setLoading(false);
     }
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    ask(question);
+  }
+
+  function handleSuggestedClick(suggested: string) {
+    ask(suggested);
   }
 
   return (
@@ -60,6 +79,22 @@ export function AskSection() {
             {loading ? "Asking…" : "Ask"}
           </button>
         </form>
+        <p className="mt-3 text-xs font-medium uppercase tracking-wider text-[var(--muted)]">
+          Try asking
+        </p>
+        <div className="mt-2 flex flex-wrap gap-2">
+          {SUGGESTED_QUESTIONS.map((q) => (
+            <button
+              key={q}
+              type="button"
+              onClick={() => handleSuggestedClick(q)}
+              disabled={loading}
+              className="rounded-full border border-[var(--border)] bg-[var(--background)] px-3 py-1.5 text-sm text-[var(--foreground)] transition hover:border-[var(--foreground)] hover:bg-[var(--card)] disabled:opacity-50"
+            >
+              {q}
+            </button>
+          ))}
+        </div>
         {error && (
           <p className="mt-3 text-sm text-red-600 dark:text-red-400" role="alert">
             {error}

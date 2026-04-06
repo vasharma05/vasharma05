@@ -3,20 +3,20 @@
     "visible": true,
     "domain": "https://vasharma05.com",
     "title": "Vineet Sharma – Senior Frontend Engineer",
-    "description": "Senior Frontend Engineer and open-source technical lead with experience in microfrontends architecture and digital health.",
+    "description": "Software Engineer and open-source technical lead with experience in microfrontends architecture",
     "language": "en",
     "canonicalPath": "/"
   },
   "profile": {
     "visible": true,
     "name": "Vineet Sharma",
-    "tagline": "Senior Frontend Engineer & Open-Source Technical Lead | Microfrontends & Digital Health",
-    "location": "Gurugram, India",
+    "tagline": "Software Engineer and open-source technical lead with experience in microfrontends architecture",
+    "location": "Bengaluru, India",
     "email": "vasharma05.work@gmail.com",
     "phone": "+91 9210347740",
     "avatar": {
       "visible": true,
-      "src": "/images/profile.jpg",
+      "src": "/images/profile.png",
       "alt": "Portrait of Vineet Sharma"
     }
   },
@@ -81,7 +81,7 @@
       "targetId": "projects"
     },
     {
-      "visible": true,
+      "visible": false,
       "id": "ask",
       "label": "Ask",
       "targetId": "ask"
@@ -97,14 +97,14 @@
     "visible": true,
     "headline": "Hi, I'm",
     "highlightName": "Vineet Sharma",
-    "subtitle": "4+ years of experience in building microfrontend architectures and digital health products.",
+    "subtitle": "4.5+ years of experience in building seamless, scalable and reliable cross-platform applications",
     "typewriter": {
       "visible": true,
       "options": [
         "Vineet Sharma",
         "<vasharma05 />",
-        "Senior Software Engineer",
-        "Open-source Project Maintainer at OpenMRS"
+        "Software Engineer",
+        "Open-source Project Maintainer, OpenMRS"
       ]
     },
     "primaryCta": {
@@ -122,6 +122,12 @@
           "id": "linkedin",
           "label": "LinkedIn",
           "url": "https://www.linkedin.com/in/vasharma05"
+        },
+        {
+          "visible": true,
+          "id": "github",
+          "label": "GitHub",
+          "url": "https://github.com/vasharma05"
         },
         {
           "visible": true,
@@ -144,7 +150,7 @@
     "summaryItems": [
       {
         "visible": true,
-        "text": "Senior Frontend Engineer with 4 years of experience in microfrontends architecture, React.js, and TypeScript, seeking a technical leadership position."
+        "text": "Experience in microfrontends architecture, React.js, and TypeScript, seeking a technical leadership position."
       },
       {
         "visible": true,
@@ -165,7 +171,7 @@
     "items": [
       {
         "visible": true,
-        "degree": "Dual Degree (B.Tech. + M.Tech.)",
+        "degree": "Master of Technology (M.Tech.)",
         "institution": "National Institute of Technology, Hamirpur",
         "location": "Hamirpur, Himachal Pradesh",
         "period": "Aug 2017 – Jun 2022",
@@ -177,11 +183,25 @@
         "details": [
           {
             "visible": true,
-            "text": "Master of Technology (M.Tech.): CGPA 9.80 / 10"
-          },
+            "text": "Computer Science and Engineering: CGPA 9.80 / 10"
+          }
+        ]
+      },
+      {
+        "visible": true,
+        "degree": "Bachelor of Technology (B.Tech.)",
+        "institution": "National Institute of Technology, Hamirpur",
+        "location": "Hamirpur, Himachal Pradesh",
+        "period": "Aug 2017 – Jun 2022",
+        "logo": {
+          "visible": true,
+          "src": "/images/nit-hamirpur-logo.png",
+          "alt": "NIT Hamirpur"
+        },
+        "details": [
           {
             "visible": true,
-            "text": "Bachelor of Technology (B.Tech.): CGPA 9.43 / 10"
+            "text": "Computer Science and Engineering: CGPA 9.43 / 10"
           }
         ]
       }
@@ -194,8 +214,8 @@
         "visible": true,
         "company": "Madiro.org",
         "role": "Software Engineer III",
-        "location": "Toronto, Canada",
-        "period": "Feb 2025 – Present",
+        "location": "Toronto, Canada (Remote)",
+        "period": "Feb 2025 -- Present",
         "logo": {
           "visible": true,
           "src": "/images/madiro-logo.png",
@@ -206,135 +226,72 @@
             "visible": true,
             "type": "role",
             "title": "Software Engineer III",
-            "period": "Feb 2025 – Present",
+            "period": "Feb 2025 -- Present",
             "responsibilities": []
           }
         ],
-        "primaryLink": {
+        "projectJumpLinks": {
           "visible": true,
-          "label": "madiro.org",
-          "url": "https://www.madiro.org"
-        },
-        "projects": [
-          {
-            "visible": true,
-            "name": "Ubuntu Village of Life – Health Information System (Burundi)",
-            "highlights": [
-              {
-                "visible": true,
-                "text": "Led the implementation of an integrated Health Information System using Ozone HIS for Ubuntu Village of Life in Burundi."
-              },
-              {
-                "visible": true,
-                "text": "Set up OpenMRS for patient record management and Odoo for pharmacy, billing, and inventory with both systems synced to automate patient billing for medications, labs, and procedures."
-              },
-              {
-                "visible": true,
-                "text": "Implemented Single Sign-On (SSO) using Keycloak for secure access to OpenMRS and Odoo, managing role-based access control through Keycloak."
-              }
-            ]
-          },
-          {
-            "visible": true,
-            "name": "Health Information System – Mosul, Iraq (Médecins Sans Frontières)",
-            "highlights": [
-              {
-                "visible": true,
-                "text": "Improved scripts to generate OpenMRS digital forms directly from an Excel sheet."
-              },
-              {
-                "visible": true,
-                "text": "Managed OpenMRS data (forms, diagnoses, laboratory tests, medical procedures, etc.) for the implementation via Open Concept Lab."
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "visible": true,
-        "company": "OpenMRS",
-        "role": "Software Engineer (Dev/4), Global Product Support Team",
-        "location": "United States (remote)",
-        "period": "Feb 2021 – Present",
-        "logo": {
-          "visible": true,
-          "src": "/images/openmrs-logo.png",
-          "alt": "OpenMRS"
-        },
-        "positions": [
-          {
-            "visible": true,
-            "type": "role",
-            "title": "Global Product Support Team",
-            "period": "Dec 2023 – Present",
-            "responsibilities": []
-          },
-          {
-            "visible": true,
-            "type": "progression",
-            "title": "Software Engineer (Dev/4)",
-            "period": "Dec 2023 – Present",
-            "responsibilities": []
-          },
-          {
-            "visible": true,
-            "type": "progression",
-            "title": "Software Engineer (Dev/3)",
-            "period": "Oct 2022 – Dec 2023",
-            "responsibilities": []
-          },
-          {
-            "visible": true,
-            "type": "progression",
-            "title": "Software Engineer (Dev/2)",
-            "period": "Sep 2021 – Oct 2022",
-            "responsibilities": []
-          },
-          {
-            "visible": true,
-            "type": "progression",
-            "title": "Software Engineer (Dev/1)",
-            "period": "Feb 2021 – Aug 2021",
-            "responsibilities": []
-          }
-        ],
-        "primaryLink": {
-          "visible": true,
-          "label": "openmrs.org",
-          "url": "https://openmrs.org"
+          "heading": "Projects",
+          "items": [
+            {
+              "visible": true,
+              "slug": "msf-health-information-system-openmrs",
+              "label": "MSF Health Information System: LIME-EMR"
+            },
+            {
+              "visible": true,
+              "slug": "ubuntu-village-of-life-his",
+              "label": "Ubuntu Village of Life: UVL-EMR"
+            }
+          ]
         },
         "highlights": [
           {
             "visible": true,
-            "text": "Lead mentor for the Improved Implementer Tools project in Google Summer of Code 2025."
+            "text": "Owned end-to-end implementation of Burundi's first OpenMRS 3 deployment — from requirements gathering through on-site training — now in production and recognized by the Ministry of Health, Burundi"
           },
           {
             "visible": true,
-            "text": "Building OpenMRS 3 using microfrontends architecture in TypeScript/JavaScript and React.js."
+            "text": "Shipped the full Ozone HIS stack (OpenMRS + Odoo + Keycloak SSO + Superset) in record 2-month timeline, integrating patient records, pharmacy, billing, inventory, and reporting for UVL-EMR"
           },
           {
             "visible": true,
-            "text": "Responsible for maintenance, reviews, testing, debugging, feature enhancements, performance, and releases across the OpenMRS 3 ecosystem."
+            "text": "Built a multi-threaded Python tooling suite (18+ modules, rate-limit-aware batching) for Open Concept Lab, automating metadata management (diagnoses, lab tests, drugs, procedures) — reducing days of manual work to seconds per operation"
           },
           {
             "visible": true,
-            "text": "Support multiple organizations to onboard and build on OpenMRS 3.0."
+            "text": "Contributed to the form generation pipeline to produce OpenMRS digital forms from Excel, cutting form creation from ~3 days to 30 minutes across 70+ clinical forms"
           },
           {
             "visible": true,
-            "text": "Lead daily and weekly squad calls with community members, including debugging, learning sessions, and updates."
-          },
-          {
-            "visible": true,
-            "text": "Google Summer of Code participation: GSoC 2025 mentor, GSoC 2024 Admin, GSoC 2023 Mentor, GSoC 2021 Contributor."
+            "text": "Leveraged the previous work done for Iraq's Mosul HIS to expand the HIS to 2 new MSF sites (Matsapha, Eswatini and Bunia, Congo) in under record time of 2 weeks each"
           }
+        ],
+        "techStackUsed": [
+          "JavaScript",
+          "TypeScript",
+          "Python",
+          "React.js",
+          "Microfrontends Architecture",
+          "Maven",
+          "Docker",
+          "Nginx",
+          "LetsEncrypt",
+          "Microsoft Azure",
+          "MySQL",
+          "PostgreSQL",
+          "OpenMRS 3",
+          "Ozone HIS",
+          "Keycloak"
         ]
       },
       {
         "visible": true,
         "company": "Mekom Solutions",
         "role": "Software Engineer II",
-        "location": "Singapore (remote)",
+        "subtitle": "Hired by Mekom Solutions to work within the OpenMRS open-source community — all contributions shipped upstream to the OpenMRS 3 project",
+        "location": "Singapore (Remote)",
         "period": "Sep 2021 – Feb 2025",
         "logo": {
           "visible": true,
@@ -372,24 +329,122 @@
         "highlights": [
           {
             "visible": true,
-            "text": "Led frontend Ozone HIS implementation for Hôpital du Sacré-Cœur-de-Montréal, France."
+            "text": "Redesigned the Patient Orders App in OpenMRS 3 as a zero-code configuration layer, reducing implementation effort from custom development to a 2-line config change — now adopted across multiple Ozone HIS deployments"
           },
           {
             "visible": true,
-            "text": "Led frontend implementation and development of Ozone HIS for the Ministry of Health, Cambodia (World Bank–funded project)."
+            "text": "Partnered with clinical teams at Partners In Health (USA) to design and ship an in-patient ward management dashboard in OpenMRS 3, now used for real-time bed tracking and patient flow across their facilities"
           },
           {
             "visible": true,
-            "text": "Led development of an in‑patient ward management dashboard for OpenMRS 3 in collaboration with Partners In Health, USA."
+            "text": "Mentored a junior engineer over 12 months from onboarding to independently delivering features in OpenMRS 3"
           },
           {
             "visible": true,
-            "text": "Mentored a Software Engineer through OpenMRS 3 development."
+            "text": "Drove requirements from 3 international clients (France, Cambodia, USA) into upstream OpenMRS 3 features, balancing client timelines with community-first architecture across 3,000+ sites"
           },
           {
             "visible": true,
-            "text": "Led translation implementation for OpenMRS 3 and OpenMRS Form Engine using i18next, enabling easy LTR/RTL language support via Transifex."
+            "text": "Redesigned OpenMRS 3's i18n layer with i18next — adding RTL support, pluralization, and locale-aware formatting — and integrated Transifex to let non-developers manage translations across 15+ languages"
           }
+        ],
+        "techStackUsed": [
+          "JavaScript",
+          "TypeScript",
+          "React.js",
+          "Carbon Design System",
+          "Jest",
+          "Playwright",
+          "Webpack",
+          "Single-spa.js",
+          "i18next",
+          "Zustand",
+          "Docker"
+        ]
+      },
+      {
+        "visible": true,
+        "company": "OpenMRS",
+        "role": "Software Engineer, Global Product Support Team (Community)",
+        "location": "United States (Remote)",
+        "period": "Feb 2021 -- Present",
+        "logo": {
+          "visible": true,
+          "src": "/images/openmrs-logo.png",
+          "alt": "OpenMRS"
+        },
+        "positions": [
+          {
+            "visible": true,
+            "type": "role",
+            "title": "Software Engineer, Global Product Support Team",
+            "period": "Dec 2023 -- Present",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "progression",
+            "title": "Software Engineer (Dev/4)",
+            "period": "Dec 2023 -- Present",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "progression",
+            "title": "Software Engineer (Dev/3)",
+            "period": "Oct 2022 -- Dec 2023",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "progression",
+            "title": "Software Engineer (Dev/2)",
+            "period": "Sep 2021 -- Oct 2022",
+            "responsibilities": []
+          },
+          {
+            "visible": true,
+            "type": "progression",
+            "title": "Software Engineer (Dev/1)",
+            "period": "Feb 2021 -- Aug 2021",
+            "responsibilities": []
+          }
+        ],
+        "primaryLink": {
+          "visible": true,
+          "label": "openmrs.org",
+          "url": "https://openmrs.org"
+        },
+        "highlights": [
+          {
+            "visible": true,
+            "text": "Core maintainer of OpenMRS 3, a microfrontend platform (React, TypeScript, single-spa.js) deployed at 3,000+ healthcare sites globally — responsible for architecture decisions, code reviews, releases, and performance across the ecosystem"
+          },
+          {
+            "visible": true,
+            "text": "Rearchitected OpenMRS 3's Workspace system with multi-window and nested child window support, abstracting all lifecycle management behind a minimal API that freed module developers from handling state and cleanup logic"
+          },
+          {
+            "visible": true,
+            "text": "Onboarded 5+ implementing organizations onto OpenMRS 3.0 and led daily/weekly squad calls covering debugging, learning sessions, and release coordination"
+          },
+          {
+            "visible": true,
+            "text": "GSoC 2025 Mentor, GSoC 2024 Org Admin, GSoC 2023 Mentor, GSoC 2021 Contributor — shaping project scope and guiding contributors across 4 program cycles"
+          }
+        ],
+        "techStackUsed": [
+          "JavaScript",
+          "TypeScript",
+          "React.js",
+          "Carbon Design System",
+          "Jest",
+          "Playwright",
+          "Webpack",
+          "Single-spa.js",
+          "i18next",
+          "Zustand",
+          "Docker"
         ]
       }
     ]
@@ -511,8 +566,7 @@
         "items": [
           { "visible": true, "label": "Jest" },
           { "visible": true, "label": "React Testing Library" },
-          { "visible": true, "label": "Playwright" },
-          { "visible": true, "label": "Enzyme" }
+          { "visible": true, "label": "Playwright" }
         ]
       },
       {
@@ -563,7 +617,6 @@
           { "visible": true, "label": "GitHub" },
           { "visible": true, "label": "GitHub Workspaces" },
           { "visible": true, "label": "Gitpod" },
-          { "visible": true, "label": "Bitwarden" },
           { "visible": true, "label": "GitLab" }
         ]
       },
@@ -607,13 +660,20 @@
       },
       {
         "visible": true,
+        "title": "Engineering Mentor",
+        "organization": "Mekom Solutions",
+        "period": "2023 – 2025",
+        "description": "Mentored a junior engineer over 12 months from onboarding to independently delivering features in OpenMRS 3"
+      },
+      {
+        "visible": true,
         "title": "Frontend Team Lead",
         "organization": "Mekom Solutions",
         "period": "2023 – 2025",
         "description": "Led frontend team for Ozone HIS implementations, mentoring engineers and driving architectural decisions."
       },
       {
-        "visible": true,
+        "visible": false,
         "title": "Training and Placement Representative",
         "organization": "NIT Hamirpur",
         "period": "2021 – 2022",
@@ -639,7 +699,7 @@
         "description": "Ranked around 75k globally with consistent participation in contests."
       },
       {
-        "visible": true,
+        "visible": false,
         "title": "Top 11% in LeetCode contests globally",
         "issuer": "LeetCode",
         "period": "",
@@ -655,8 +715,7 @@
         "title": "On-site UVL-EMR Implementation",
         "type": "Implementation Visit",
         "location": "Mugamba, Burundi",
-        "date": "Sep 2025",
-        "description": "On-site implementation work for Ubuntu Village of Life EMR rollout."
+        "date": "Sep 2025"
       },
       {
         "visible": true,
@@ -693,7 +752,7 @@
     ]
   },
   "references": {
-    "visible": true,
+    "visible": false,
     "items": [
       {
         "visible": true,
@@ -738,16 +797,39 @@
     "items": [
       {
         "visible": true,
-        "slug": "ubuntu-village-of-life-his",
-        "title": "Ubuntu Village of Life – Health Information System",
-        "role": "Software Engineer III",
-        "organization": "Madiro.org",
-        "summary": "Led frontend implementation for an integrated Health Information System using Ozone HIS for Ubuntu Village of Life in Burundi.",
+        "slug": "openmrs-3-platform",
+        "title": "OpenMRS 3.x",
+        "role": "Software Engineer (Dev/4)",
+        "organization": "OpenMRS",
+        "summary": "Core maintainer and contributor to the OpenMRS 3 microfrontend platform, supporting global implementations.",
+        "highlights": [
+          {
+            "visible": true,
+            "text": "Rearchitected OpenMRS 3's Workspace system with multi-window and nested child window support, abstracting all lifecycle management behind a minimal API that freed module developers from handling state and cleanup logic"
+          },
+          {
+            "visible": true,
+            "text": "Redesigned the Patient Orders App in OpenMRS 3 as a zero-code configuration layer, reducing implementation effort from custom development to a 2-line config change — now adopted across multiple Ozone HIS deployments"
+          },
+          {
+            "visible": true,
+            "text": "Partnered with clinical teams at Partners In Health (USA) to design and ship an in-patient ward management dashboard in OpenMRS 3, now used for real-time bed tracking and patient flow across their facilities"
+          },
+          {
+            "visible": true,
+            "text": "Redesigned OpenMRS 3's i18n layer with i18next — adding RTL support, pluralization, and locale-aware formatting — and integrated Transifex to let non-developers manage translations across 15+ languages"
+          }
+        ],
         "tags": [
-          { "visible": true, "label": "Ozone HIS" },
-          { "visible": true, "label": "OpenMRS" },
-          { "visible": true, "label": "Odoo" },
-          { "visible": true, "label": "Keycloak" }
+          { "visible": "true", "label": "JavaScript" },
+          { "visible": "true", "label": "TypeScript" },
+          { "visible": "true", "label": "React.js" },
+          { "visible": "true", "label": "Microfrontends Architecture" },
+          { "visible": "true", "label": "Docker" },
+          { "visible": "true", "label": "MySQL" },
+          { "visible": "true", "label": "OpenMRS 3" },
+          { "visible": "true", "label": "Ozone HIS" },
+          { "visible": "true", "label": "i18next" }
         ],
         "links": [],
         "thumbnail": {
@@ -758,15 +840,96 @@
       },
       {
         "visible": true,
-        "slug": "openmrs-3-platform",
-        "title": "OpenMRS 3 Platform",
-        "role": "Software Engineer (Dev/4)",
-        "organization": "OpenMRS",
-        "summary": "Core maintainer and contributor to the OpenMRS 3 microfrontend platform, supporting global implementations.",
+        "slug": "msf-health-information-system-openmrs",
+        "title": "Health Information System for Médecins Sans Frontières (MSF)",
+        "role": "Software Engineer III",
+        "organization": "Madiro.org",
+        "summary": "Python tooling and form pipelines supporting OpenMRS–based HIS for MSF, including Mosul HIS expansion to new sites and multilingual metadata.",
+        "highlights": [
+          {
+            "visible": true,
+            "text": "Built a multi-threaded Python tooling suite (18+ modules, rate-limit-aware batching) for Open Concept Lab, automating metadata management (diagnoses, lab tests, drugs, procedures) — reducing days of manual work to seconds per operation"
+          },
+          {
+            "visible": true,
+            "text": "Contributed to the form generation pipeline to produce OpenMRS digital forms from Excel, cutting form creation from ~3 days to 30 minutes across 70+ clinical forms"
+          },
+          {
+            "visible": true,
+            "text": "Leveraged the tooling suite to expand the Mosul HIS to 2 new MSF sites (Matsapha, Eswatini and Bunia, Congo) in 2 weeks each"
+          },
+          {
+            "visible": true,
+            "text": "Extended scripts to handle multilingual metadata and application translations, cutting 4 weeks of implementer effort to 1 week of implementation time"
+          }
+        ],
         "tags": [
-          { "visible": true, "label": "React" },
-          { "visible": true, "label": "TypeScript" },
-          { "visible": true, "label": "Microfrontends" }
+          { "visible": "true", "label": "JavaScript" },
+          { "visible": "true", "label": "TypeScript" },
+          { "visible": "true", "label": "Python" },
+          { "visible": "true", "label": "React.js" },
+          { "visible": "true", "label": "Microfrontends Architecture" },
+          { "visible": "true", "label": "Maven" },
+          { "visible": "true", "label": "Docker" },
+          { "visible": "true", "label": "Nginx" },
+          { "visible": "true", "label": "LetsEncrypt" },
+          { "visible": "true", "label": "Microsoft Azure" },
+          { "visible": "true", "label": "MySQL" },
+          { "visible": "true", "label": "PostgreSQL" },
+          { "visible": "true", "label": "OpenMRS 3" },
+          { "visible": "true", "label": "Ozone HIS" },
+          { "visible": "true", "label": "Keycloak" },
+          { "visible": "true", "label": "Superset" }
+        ],
+        "links": [],
+        "thumbnail": {
+          "visible": false,
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "visible": true,
+        "slug": "ubuntu-village-of-life-his",
+        "title": "Ubuntu Village of Life – Health Information System",
+        "role": "Software Engineer III",
+        "organization": "Madiro.org",
+        "summary": "End-to-end Ozone HIS implementation for Ubuntu Village of Life in Burundi — OpenMRS 3, Odoo, Keycloak SSO, and Superset in production with ministry recognition.",
+        "highlights": [
+          {
+            "visible": true,
+            "text": "Owned end-to-end implementation of Burundi's first OpenMRS 3 deployment — from requirements gathering through on-site training — now in production and recognized by the Ministry of Health"
+          },
+          {
+            "visible": true,
+            "text": "Shipped the full Ozone HIS stack (OpenMRS + Odoo + Keycloak SSO + Superset) in record 2-month timeline, integrating patient records, pharmacy, billing, inventory, and reporting"
+          },
+          {
+            "visible": true,
+            "text": "Configured Keycloak-based SSO with role-based access control for 50+ clinicians across OpenMRS and Odoo"
+          },
+          {
+            "visible": true,
+            "text": "Conducted on-site training in Mugamba, Burundi covering clinical workflows, billing, and user management"
+          }
+        ],
+        "tags": [
+          { "visible": "true", "label": "JavaScript" },
+          { "visible": "true", "label": "TypeScript" },
+          { "visible": "true", "label": "Python" },
+          { "visible": "true", "label": "React.js" },
+          { "visible": "true", "label": "Microfrontends Architecture" },
+          { "visible": "true", "label": "Maven" },
+          { "visible": "true", "label": "Docker" },
+          { "visible": "true", "label": "Nginx" },
+          { "visible": "true", "label": "LetsEncrypt" },
+          { "visible": "true", "label": "Microsoft Azure" },
+          { "visible": "true", "label": "MySQL" },
+          { "visible": "true", "label": "PostgreSQL" },
+          { "visible": "true", "label": "OpenMRS 3" },
+          { "visible": "true", "label": "Ozone HIS" },
+          { "visible": "true", "label": "Keycloak" },
+          { "visible": "true", "label": "Superset" }
         ],
         "links": [],
         "thumbnail": {
@@ -782,10 +945,61 @@
         "role": "Software Engineer II / Frontend Lead",
         "organization": "Mekom Solutions",
         "summary": "Led frontend implementation of Ozone HIS for the Ministry of Health, Cambodia, a World Bank–funded project.",
+        "highlights": [
+          {
+            "visible": true,
+            "text": "Redesigned OpenMRS 3's i18n layer with i18next — adding RTL support, pluralization, and locale-aware formatting — and integrated Transifex to let non-developers manage translations across 15+ languages"
+          },
+          {
+            "visible": true,
+            "text": "Partnered with clinical teams at Partners In Health (USA) to design and ship an in-patient ward management dashboard in OpenMRS 3, now used for real-time bed tracking and patient flow across their facilities"
+          }
+        ],
         "tags": [
-          { "visible": true, "label": "Ozone HIS" },
-          { "visible": true, "label": "OpenMRS" },
-          { "visible": true, "label": "Frontend Architecture" }
+          { "visible": "true", "label": "JavaScript" },
+          { "visible": "true", "label": "TypeScript" },
+          { "visible": "true", "label": "React.js" },
+          { "visible": "true", "label": "Microfrontends Architecture" },
+          { "visible": "true", "label": "Docker" },
+          { "visible": "true", "label": "MySQL" },
+          { "visible": "true", "label": "OpenMRS 3" },
+          { "visible": "true", "label": "Ozone HIS" },
+          { "visible": "true", "label": "i18next" }
+        ],
+        "links": [],
+        "thumbnail": {
+          "visible": false,
+          "src": "",
+          "alt": ""
+        }
+      },
+      {
+        "visible": true,
+        "slug": "ozone-haiti",
+        "title": "Ozone HIS – Hôpital du Sacré-Cœur-de-Montréal, France",
+        "role": "Software Engineer II",
+        "organization": "Mekom Solutions",
+        "summary": "Led frontend implementation of Ozone HIS for Hôpital du Sacré-Cœur-de-Montréal, France.",
+        "highlights": [
+          {
+            "visible": true,
+            "text": "Redesigned the Patient Orders App in OpenMRS 3 as a zero-code configuration layer, reducing implementation effort from custom development to a 2-line config change — now adopted across multiple Ozone HIS deployments"
+          },
+          {
+            "visible": true,
+            "text": "Rearchitected OpenMRS 3's Workspace system with multi-window and nested child window support, abstracting all lifecycle management behind a minimal API that freed module developers from handling state and cleanup logic"
+          }
+        ],
+        "tags": [
+          { "visible": "true", "label": "JavaScript" },
+          { "visible": "true", "label": "TypeScript" },
+          { "visible": "true", "label": "React.js" },
+          { "visible": "true", "label": "Microfrontends Architecture" },
+          { "visible": "true", "label": "Docker" },
+          { "visible": "true", "label": "MySQL" },
+          { "visible": "true", "label": "OpenMRS 3" },
+          { "visible": "true", "label": "Ozone HIS" },
+          { "visible": "true", "label": "i18next" }
         ],
         "links": [],
         "thumbnail": {
@@ -845,7 +1059,7 @@
           "required": true
         },
         {
-          "visible": true,
+          "visible": false,
           "id": "projectType",
           "label": "Project type",
           "type": "select",
@@ -862,14 +1076,14 @@
           ]
         },
         {
-          "visible": true,
+          "visible": false,
           "id": "budget",
           "label": "Budget range",
           "type": "text",
           "required": true
         },
         {
-          "visible": true,
+          "visible": false,
           "id": "timeline",
           "label": "Timeline",
           "type": "text",
