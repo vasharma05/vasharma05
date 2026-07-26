@@ -1,4 +1,6 @@
-import { ThemeToggle } from "@/components/theme-toggle";
+import { SiteNav } from "@/components/site-nav";
+import { TimelineItem } from "@/components/timeline-item";
+import { ExperienceCard } from "@/components/experience-card";
 import { ContactSection } from "@/components/contact-section";
 import { AboutSection } from "@/components/about-section";
 import { ScrollDownArrow } from "@/components/scroll-down-arrow";
@@ -17,6 +19,12 @@ import { ProjectsGrid } from "@/components/projects-grid";
 
 function isExternalHref(href: string) {
   return /^https?:\/\//i.test(href);
+}
+
+function extractStartYear(period: unknown): string | null {
+  if (typeof period !== "string") return null;
+  const match = period.match(/\b(19|20)\d{2}\b/);
+  return match ? match[0] : null;
 }
 
 export default async function Home() {
@@ -45,32 +53,14 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation */}
-      <header className="sticky top-0 z-20 border-b border-[var(--border)] bg-[var(--background)]/80 backdrop-blur">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-          <a
-            href="#hero"
-            className="text-base font-semibold tracking-tight text-[var(--foreground)] sm:text-lg"
-          >
-            {profile.visible ? profile.name : "Portfolio"}
-          </a>
-
-          <div className="flex items-center gap-6">
-            <div className="hidden items-center gap-5 text-sm font-medium text-[var(--muted)] sm:flex">
-              {filteredNav.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.targetId}`}
-                  className="transition hover:text-[var(--foreground)]"
-                >
-                  {item.label}
-                </a>
-              ))}
-            </div>
-            <ThemeToggle />
-          </div>
-        </nav>
-      </header>
+      <SiteNav
+        brand={profile.visible ? profile.name : "Portfolio"}
+        items={filteredNav.map((n) => ({
+          id: n.id,
+          label: n.label,
+          targetId: n.targetId,
+        }))}
+      />
 
       <main>
         {/* Hero - 90vh with scroll-down arrow */}
@@ -81,7 +71,7 @@ export default async function Home() {
           <div className="flex flex-col items-center">
             <div className="flex flex-1 flex-col items-center sm:items-start">
               <div className="space-y-6 text-center sm:text-left">
-                <p className="text-sm font-medium uppercase tracking-[0.25em] text-[var(--muted)] sm:text-base">
+                <p className="text-sm font-medium tracking-wide text-[var(--muted)] sm:text-base">
                   {hero.visible ? hero.headline : "Hi, I'm"}
                 </p>
                 <h1 className="text-4xl font-semibold tracking-tight text-[var(--foreground)] sm:text-5xl md:text-6xl lg:text-7xl">
@@ -164,12 +154,6 @@ export default async function Home() {
                         hero.connect as { links: { visible?: boolean }[] }
                       ).links.some((l) => l.visible) && (
                         <>
-                          {hero.primaryCta.visible && (
-                            <span
-                              aria-hidden
-                              className="h-8 w-px shrink-0 bg-[var(--border)]"
-                            />
-                          )}
                           <HeroConnect
                             label={(hero.connect as { label: string }).label}
                             links={
@@ -215,10 +199,22 @@ export default async function Home() {
           <SectionFade>
             <section id="education" className="section">
               <h2 className="section-title">Education</h2>
-              <div className="mx-auto flex max-w-3xl flex-col gap-10">
-                {education.items
-                  .filter((item) => item.visible)
-                  .map((item, idx) => {
+              <div className="flex flex-col gap-10">
+                {(() => {
+                  const visibleItems = education.items.filter(
+                    (item) => item.visible,
+                  );
+                  const groups: {
+                    institution: string;
+                    location?: string;
+                    logo: {
+                      visible?: boolean;
+                      src?: string;
+                      alt?: string;
+                    } | null;
+                    items: typeof visibleItems;
+                  }[] = [];
+                  visibleItems.forEach((item) => {
                     const logo =
                       "logo" in item &&
                       item.logo &&
@@ -229,53 +225,108 @@ export default async function Home() {
                             alt?: string;
                           })
                         : null;
+                    const existing = groups.find(
+                      (g) => g.institution === item.institution,
+                    );
+                    if (existing) {
+                      existing.items.push(item);
+                      if (!existing.logo && logo) existing.logo = logo;
+                    } else {
+                      groups.push({
+                        institution: item.institution,
+                        location: item.location,
+                        logo,
+                        items: [item],
+                      });
+                    }
+                  });
+                  return groups.map((group, gIdx) => {
                     const showLogo =
-                      logo?.visible && logo?.src && logo.src.trim() !== "";
+                      group.logo?.visible &&
+                      group.logo?.src &&
+                      group.logo.src.trim() !== "";
                     return (
                       <article
-                        key={idx}
+                        key={gIdx}
                         className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-8"
                       >
                         {showLogo && (
                           <EducationLogo
-                            src={withBasePath(logo!.src!)}
-                            alt={logo!.alt ?? item.institution ?? "Logo"}
+                            src={withBasePath(group.logo!.src!)}
+                            alt={group.logo!.alt ?? group.institution ?? "Logo"}
                             className="h-20 w-20 object-contain sm:h-24 sm:w-24"
                           />
                         )}
                         <div className="min-w-0 flex-1">
-                          <div className="flex flex-wrap items-baseline justify-between gap-2">
-                            <h3 className="text-xl font-bold text-[var(--foreground)] sm:text-2xl">
-                              {item.degree}
-                            </h3>
-                            <span className="text-sm font-medium text-[var(--muted)]">
-                              {item.period}
-                            </span>
-                          </div>
-                          <p className="mt-1 text-base font-medium text-[var(--muted)]">
-                            {item.institution}
-                            {item.location && ` · ${item.location}`}
-                          </p>
-                          {item.details?.filter(
-                            (d: { visible: boolean }) => d.visible,
-                          )?.length > 0 && (
-                            <ul className="mt-4 space-y-2 border-l-2 border-[var(--border)] pl-4">
-                              {item.details
-                                .filter((d: { visible: boolean }) => d.visible)
-                                .map((d: { text: string }, i: number) => (
-                                  <li
-                                    key={i}
-                                    className="text-base font-semibold text-[var(--foreground)]"
-                                  >
-                                    {d.text}
-                                  </li>
-                                ))}
-                            </ul>
+                          <h3 className="text-xl font-bold text-[var(--foreground)] sm:text-2xl">
+                            {group.institution}
+                          </h3>
+                          {group.location && (
+                            <p className="mt-1 text-base font-medium text-[var(--muted)]">
+                              {group.location}
+                            </p>
                           )}
+                          <div className="mt-6 rounded-md bg-gradient-to-r from-sky-500/[0.06] to-transparent px-4 py-4">
+                            <p className="text-[11px] font-semibold uppercase tracking-widest text-[var(--muted)]">
+                              Progression
+                            </p>
+                            <ol className="mt-2 relative space-y-4">
+                              <span
+                                aria-hidden
+                                className="absolute left-[5px] top-2 bottom-2 w-px bg-gradient-to-b from-sky-500/60 via-[var(--border)] to-transparent"
+                              />
+                              {group.items.map((item, i) => {
+                                const isCurrent = i === 0;
+                                const details =
+                                  item.details?.filter(
+                                    (d: { visible: boolean }) => d.visible,
+                                  ) ?? [];
+                                return (
+                                  <li key={i} className="relative pl-6">
+                                    <span
+                                      aria-hidden
+                                      className={`absolute left-0 top-1.5 h-[11px] w-[11px] rounded-full border-2 ${
+                                        isCurrent
+                                          ? "border-transparent bg-gradient-to-br from-sky-500 to-indigo-500"
+                                          : "border-[var(--border)] bg-[var(--background)]"
+                                      }`}
+                                    />
+                                    <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+                                      <span
+                                        className={`text-sm font-semibold ${
+                                          isCurrent
+                                            ? "text-[var(--foreground)]"
+                                            : "text-[var(--foreground)]/80"
+                                        }`}
+                                      >
+                                        {item.degree}
+                                      </span>
+                                      <span className="ml-auto text-xs font-medium tabular-nums text-[var(--muted)]">
+                                        {item.period}
+                                      </span>
+                                    </div>
+                                    {details.length > 0 && (
+                                      <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-relaxed text-[var(--muted)]">
+                                        {details.map(
+                                          (
+                                            d: { text: string },
+                                            di: number,
+                                          ) => (
+                                            <li key={di}>{d.text}</li>
+                                          ),
+                                        )}
+                                      </ul>
+                                    )}
+                                  </li>
+                                );
+                              })}
+                            </ol>
+                          </div>
                         </div>
                       </article>
                     );
-                  })}
+                  });
+                })()}
               </div>
             </section>
           </SectionFade>
@@ -290,198 +341,29 @@ export default async function Home() {
                 {experience.items
                   .filter((item) => item.visible)
                   .map((item, idx) => {
-                    const expLogo =
-                      "logo" in item &&
-                      item.logo &&
-                      typeof item.logo === "object"
-                        ? (item.logo as {
-                            visible?: boolean;
-                            src?: string;
-                            alt?: string;
-                          })
-                        : null;
-                    const showExpLogo =
-                      expLogo?.visible &&
-                      expLogo?.src &&
-                      expLogo.src.trim() !== "";
                     return (
-                      <div
+                      <TimelineItem
                         key={idx}
-                        className="timeline-item timeline-item-right"
+                        delayMs={Math.min(idx * 80, 320)}
+                        year={extractStartYear(
+                          (item as { period?: unknown }).period,
+                        )}
                       >
-                        <div className="timeline-dot" />
-                        <article className="timeline-card card experience-card text-base">
-                          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
-                            {showExpLogo && (
-                              <EducationLogo
-                                src={withBasePath(expLogo!.src!)}
-                                alt={expLogo!.alt ?? item.company ?? "Logo"}
-                                className="h-14 w-14 object-contain sm:h-16 sm:w-16"
-                              />
-                            )}
-                            <div className="min-w-0 flex-1 space-y-0">
-                              <div className="flex flex-wrap items-baseline justify-between gap-2 pb-3">
-                                <div>
-                                  <h3 className="text-lg font-semibold text-[var(--foreground)]">
-                                    {item.company}
-                                  </h3>
-                                  <p className="mt-0.5 text-sm text-[var(--muted)]">
-                                    {item.location}
-                                  </p>
-                                </div>
-                                <span className="text-sm font-medium text-[var(--muted)]">
-                                  {item.period}
-                                </span>
-                              </div>
-                              {(() => {
-                                const jump =
-                                  "projectJumpLinks" in item &&
-                                  item.projectJumpLinks?.visible
-                                    ? item.projectJumpLinks
-                                    : null;
-                                const jumpItems =
-                                  jump?.items?.filter((x) => x.visible) ?? [];
-                                const hasJump = jumpItems.length > 0;
-
-                                if (hasJump && jump) {
-                                  return (
-                                    <ExperienceProjectJumpLinks
-                                      heading={jump.heading}
-                                      items={jumpItems.map(
-                                        ({ slug, label }) => ({
-                                          slug,
-                                          label,
-                                        }),
-                                      )}
-                                    />
-                                  );
-                                }
-
-                                if (item.primaryLink?.visible) {
-                                  return (
-                                    <p className="border-t border-[var(--border)] pt-3 text-sm text-[var(--muted)]">
-                                      <a
-                                        href={item.primaryLink.url}
-                                        className="underline underline-offset-2"
-                                        {...(isExternalHref(
-                                          item.primaryLink.url,
-                                        )
-                                          ? {
-                                              target: "_blank" as const,
-                                              rel: "noreferrer" as const,
-                                            }
-                                          : {})}
-                                      >
-                                        {item.primaryLink.label}
-                                      </a>
-                                    </p>
-                                  );
-                                }
-
-                                return null;
-                              })()}
-                              {"positions" in item && item.positions && (
-                                <div className="mt-5 rounded-lg border border-[var(--border)] bg-[var(--background)]/60 px-4 py-3">
-                                  <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
-                                    Roles &amp; progression
-                                  </p>
-                                  <ul className="mt-3 space-y-3 text-sm text-[var(--muted)]">
-                                    {item.positions
-                                      .filter((p) => p.visible)
-                                      .map((p, i) => (
-                                        <li
-                                          key={i}
-                                          className="border-l-2 border-[var(--border)] pl-3"
-                                        >
-                                          <div className="flex flex-col gap-1">
-                                            <span className="inline-flex items-center gap-2 text-[var(--foreground)] font-semibold">
-                                              <span className="rounded-full bg-[var(--foreground)]/5 px-2 py-0.5 text-xs uppercase tracking-wide">
-                                                {p.type === "progression"
-                                                  ? "Progression"
-                                                  : "Role"}
-                                              </span>
-                                              {p.title}
-                                            </span>
-                                            <span className="text-xs font-medium text-[var(--muted)]">
-                                              {p.period}
-                                            </span>
-                                          </div>
-                                          {Array.isArray(p.responsibilities) &&
-                                            p.responsibilities.length > 0 && (
-                                              <ul className="mt-2 list-disc space-y-1.5 pl-4 text-xs leading-relaxed text-[var(--muted)]">
-                                                {p.responsibilities.map(
-                                                  (
-                                                    r:
-                                                      | { text?: string }
-                                                      | string,
-                                                    rIdx: number,
-                                                  ) => (
-                                                    <li key={rIdx}>
-                                                      {typeof r === "string"
-                                                        ? r
-                                                        : r.text}
-                                                    </li>
-                                                  ),
-                                                )}
-                                              </ul>
-                                            )}
-                                        </li>
-                                      ))}
-                                  </ul>
-                                </div>
-                              )}
-                              {"highlights" in item &&
-                                item.highlights &&
-                                (() => {
-                                  const visibleHighlights =
-                                    item.highlights.filter(
-                                      (h: { visible: boolean }) => h.visible,
-                                    );
-                                  if (!visibleHighlights.length) return null;
-
-                                  return (
-                                    <div className="mt-5 space-y-2 border-t border-[var(--border)] pt-5">
-                                      <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
-                                        Highlights
-                                      </p>
-                                      <ul className="list-disc space-y-2 pl-4 text-sm leading-relaxed text-[var(--muted)]">
-                                        {visibleHighlights.map(
-                                          (h: { text: string }, i: number) => (
-                                            <li key={i}>{h.text}</li>
-                                          ),
-                                        )}
-                                      </ul>
-                                    </div>
-                                  );
-                                })()}
-                              {"techStackUsed" in item &&
-                                Array.isArray(item.techStackUsed) &&
-                                item.techStackUsed.length > 0 && (
-                                  <div className="mt-5 space-y-2 border-t border-[var(--border)] pt-5">
-                                    <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
-                                      Tech stack
-                                    </p>
-                                    <div className="flex flex-wrap gap-1.5 text-xs">
-                                      {(item.techStackUsed as string[]).map(
-                                        (tech, i) => (
-                                          <span
-                                            key={i}
-                                            className="rounded-full border border-[var(--border)] bg-[var(--background)]/60 px-2 py-0.5 text-[var(--muted)]"
-                                          >
-                                            {tech}
-                                          </span>
-                                        ),
-                                      )}
-                                    </div>
-                                  </div>
-                                )}
-                            </div>
-                          </div>
-                        </article>
-                      </div>
+                        <ExperienceCard item={item as never} />
+                      </TimelineItem>
                     );
                   })}
               </div>
+            </section>
+          </SectionFade>
+        )}
+
+        {/* Projects */}
+        {projects.visible && (
+          <SectionFade>
+            <section id="projects" className="section">
+              <h2 className="section-title">Projects</h2>
+              <ProjectsGrid items={projects.items} />
             </section>
           </SectionFade>
         )}
@@ -494,149 +376,14 @@ export default async function Home() {
               <div className="timeline">
                 {volunteer.items
                   .filter((item: { visible: boolean }) => item.visible)
-                  .map((item: Record<string, unknown>, idx: number) => {
-                    const expLogo =
-                      "logo" in item &&
-                      item.logo &&
-                      typeof item.logo === "object"
-                        ? (item.logo as {
-                            visible?: boolean;
-                            src?: string;
-                            alt?: string;
-                          })
-                        : null;
-                    const showExpLogo =
-                      expLogo?.visible &&
-                      expLogo?.src &&
-                      expLogo.src.trim() !== "";
-                    return (
-                      <div
-                        key={idx}
-                        className="timeline-item timeline-item-right"
-                      >
-                        <div className="timeline-dot" />
-                        <article className="timeline-card card experience-card text-base">
-                          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
-                            {showExpLogo && (
-                              <EducationLogo
-                                src={withBasePath(expLogo!.src!)}
-                                alt={
-                                  expLogo!.alt ??
-                                  (item.company as string) ??
-                                  "Logo"
-                                }
-                                className="h-14 w-14 object-contain sm:h-16 sm:w-16"
-                              />
-                            )}
-                            <div className="min-w-0 flex-1 space-y-0">
-                              <div className="flex flex-wrap items-baseline justify-between gap-2 pb-3">
-                                <div>
-                                  <h3 className="text-lg font-semibold text-[var(--foreground)]">
-                                    {item.company as string}
-                                  </h3>
-                                  <p className="mt-0.5 text-sm text-[var(--muted)]">
-                                    {item.location as string}
-                                  </p>
-                                </div>
-                                <span className="text-sm font-medium text-[var(--muted)]">
-                                  {item.period as string}
-                                </span>
-                              </div>
-                              {"primaryLink" in item &&
-                              item.primaryLink &&
-                              typeof item.primaryLink === "object" &&
-                              (item.primaryLink as { visible?: boolean })
-                                .visible ? (
-                                <p className="border-t border-[var(--border)] pt-3 text-sm text-[var(--muted)]">
-                                  <a
-                                    href={
-                                      (item.primaryLink as { url: string }).url
-                                    }
-                                    className="underline underline-offset-2"
-                                    {...(isExternalHref(
-                                      (item.primaryLink as { url: string }).url,
-                                    )
-                                      ? {
-                                          target: "_blank" as const,
-                                          rel: "noreferrer" as const,
-                                        }
-                                      : {})}
-                                  >
-                                    {
-                                      (item.primaryLink as { label: string })
-                                        .label
-                                    }
-                                  </a>
-                                </p>
-                              ) : null}
-                              {"positions" in item &&
-                                Array.isArray(item.positions) &&
-                                (item.positions as { visible: boolean }[]).some(
-                                  (p) => p.visible,
-                                ) && (
-                                  <div className="mt-5 rounded-lg border border-[var(--border)] bg-[var(--background)]/60 px-4 py-3">
-                                    <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
-                                      Roles &amp; progression
-                                    </p>
-                                    <ul className="mt-3 space-y-3 text-sm text-[var(--muted)]">
-                                      {(
-                                        item.positions as {
-                                          visible: boolean;
-                                          type?: string;
-                                          title: string;
-                                          period: string;
-                                          responsibilities?: unknown[];
-                                        }[]
-                                      )
-                                        .filter((p) => p.visible)
-                                        .map((p, i) => (
-                                          <li
-                                            key={i}
-                                            className="border-l-2 border-[var(--border)] pl-3"
-                                          >
-                                            <div className="flex flex-col gap-1">
-                                              <span className="inline-flex items-center gap-2 text-[var(--foreground)] font-semibold">
-                                                <span className="rounded-full bg-[var(--foreground)]/5 px-2 py-0.5 text-xs uppercase tracking-wide">
-                                                  {p.type === "progression"
-                                                    ? "Progression"
-                                                    : "Role"}
-                                                </span>
-                                                {p.title}
-                                              </span>
-                                              <span className="text-xs font-medium text-[var(--muted)]">
-                                                {p.period}
-                                              </span>
-                                            </div>
-                                            {Array.isArray(
-                                              p.responsibilities,
-                                            ) &&
-                                              p.responsibilities.length > 0 && (
-                                                <ul className="mt-2 list-disc space-y-1.5 pl-4 text-xs leading-relaxed text-[var(--muted)]">
-                                                  {(
-                                                    p.responsibilities as (
-                                                      | { text?: string }
-                                                      | string
-                                                    )[]
-                                                  ).map((r, rIdx) => (
-                                                    <li key={rIdx}>
-                                                      {typeof r === "string"
-                                                        ? r
-                                                        : r.text}
-                                                    </li>
-                                                  ))}
-                                                </ul>
-                                              )}
-                                          </li>
-                                        ))}
-                                    </ul>
-                                  </div>
-                                )}
-                            </div>
-                          </div>
-                        </article>
-                      </div>
-                    );
-                  })}
+                  .map((item: Record<string, unknown>, idx: number) => (
+                    <TimelineItem
+                      key={idx}
+                      delayMs={Math.min(idx * 80, 320)}
+                    >
+                      <ExperienceCard item={item as never} />
+                    </TimelineItem>
+                  ))}
               </div>
             </section>
           </SectionFade>
@@ -649,71 +396,71 @@ export default async function Home() {
           </SectionFade>
         )}
 
-        {/* Leadership - list view */}
-        {leadership.visible && (
+        {/* Leadership + Achievements side-by-side */}
+        {(leadership.visible || achievements.visible) && (
           <SectionFade>
-            <section id="leadership" className="section">
-              <h2 className="section-title">Leadership</h2>
-              <ul className="mx-auto max-w-3xl list-none space-y-0 text-base">
-                {leadership.items
-                  .filter((item) => item.visible)
-                  .map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="border-b border-[var(--border)] py-4 last:border-b-0"
-                    >
-                      <h3 className="text-base font-semibold text-[var(--foreground)]">
-                        {item.title}
-                      </h3>
-                      <p className="mt-0.5 text-sm text-[var(--muted)]">
-                        {item.organization}
-                        {item.period && ` · ${item.period}`}
-                      </p>
-                      <p className="mt-2 text-sm text-[var(--muted)]">
-                        {item.description}
-                      </p>
-                    </li>
-                  ))}
-              </ul>
-            </section>
-          </SectionFade>
-        )}
-
-        {/* Achievements - list view */}
-        {achievements.visible && (
-          <SectionFade>
-            <section id="achievements" className="section">
-              <h2 className="section-title">Achievements</h2>
-              <ul className="mx-auto max-w-3xl list-none space-y-0 text-base">
-                {achievements.items
-                  .filter((item) => item.visible)
-                  .map((item, idx) => (
-                    <li
-                      key={idx}
-                      className="border-b border-[var(--border)] py-4 last:border-b-0"
-                    >
-                      <div className="flex flex-wrap items-baseline justify-between gap-2">
-                        <h3 className="text-base font-semibold text-[var(--foreground)]">
-                          {item.title}
-                        </h3>
-                        {item.period && (
-                          <span className="text-sm text-[var(--muted)]">
-                            {item.period}
-                          </span>
-                        )}
-                      </div>
-                      <p className="mt-0.5 text-sm text-[var(--muted)]">
-                        {item.issuer}
-                      </p>
-                      {item.description && (
-                        <p className="mt-2 text-sm text-[var(--muted)]">
-                          {item.description}
-                        </p>
-                      )}
-                    </li>
-                  ))}
-              </ul>
-            </section>
+            <div className="section grid gap-10 md:grid-cols-2">
+              {leadership.visible && (
+                <section id="leadership">
+                  <h2 className="section-title">Leadership</h2>
+                  <ul className="list-none space-y-0 text-base">
+                    {leadership.items
+                      .filter((item) => item.visible)
+                      .map((item, idx) => (
+                        <li
+                          key={idx}
+                          className="border-b border-[var(--border)] py-4 last:border-b-0"
+                        >
+                          <h3 className="text-base font-semibold text-[var(--foreground)]">
+                            {item.title}
+                          </h3>
+                          <p className="mt-0.5 text-sm text-[var(--muted)]">
+                            {item.organization}
+                            {item.period && ` · ${item.period}`}
+                          </p>
+                          <p className="mt-2 text-sm text-[var(--muted)]">
+                            {item.description}
+                          </p>
+                        </li>
+                      ))}
+                  </ul>
+                </section>
+              )}
+              {achievements.visible && (
+                <section id="achievements">
+                  <h2 className="section-title">Achievements</h2>
+                  <ul className="list-none space-y-0 text-base">
+                    {achievements.items
+                      .filter((item) => item.visible)
+                      .map((item, idx) => (
+                        <li
+                          key={idx}
+                          className="border-b border-[var(--border)] py-4 last:border-b-0"
+                        >
+                          <div className="flex flex-wrap items-baseline justify-between gap-2">
+                            <h3 className="text-base font-semibold text-[var(--foreground)]">
+                              {item.title}
+                            </h3>
+                            {item.period && (
+                              <span className="text-sm text-[var(--muted)]">
+                                {item.period}
+                              </span>
+                            )}
+                          </div>
+                          <p className="mt-0.5 text-sm text-[var(--muted)]">
+                            {item.issuer}
+                          </p>
+                          {item.description && (
+                            <p className="mt-2 text-sm text-[var(--muted)]">
+                              {item.description}
+                            </p>
+                          )}
+                        </li>
+                      ))}
+                  </ul>
+                </section>
+              )}
+            </div>
           </SectionFade>
         )}
 
@@ -722,12 +469,12 @@ export default async function Home() {
           <SectionFade>
             <section id="events" className="section">
               <h2 className="section-title">Events Attended</h2>
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-x-6 gap-y-0 md:grid-cols-2">
                 {events.items
                   .filter((item) => item.visible)
                   .map((item, idx) => (
                     <article key={idx} className="card text-base">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
+                      <p className="text-xs font-semibold tracking-wide text-[var(--muted)]">
                         {item.type}
                       </p>
                       <h3 className="mt-1 text-base font-semibold text-[var(--foreground)]">
@@ -744,16 +491,6 @@ export default async function Home() {
                     </article>
                   ))}
               </div>
-            </section>
-          </SectionFade>
-        )}
-
-        {/* Projects */}
-        {projects.visible && (
-          <SectionFade>
-            <section id="projects" className="section">
-              <h2 className="section-title">Projects</h2>
-              <ProjectsGrid items={projects.items} />
             </section>
           </SectionFade>
         )}
