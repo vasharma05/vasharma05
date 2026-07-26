@@ -30,7 +30,7 @@ export function ExperienceProjectJumpLinks({
 
   return (
     <div className="border-t border-[var(--border)] pt-3">
-      <p className="text-xs font-semibold uppercase tracking-wide text-[var(--muted)]">
+      <p className="text-xs font-semibold tracking-wide text-[var(--muted)]">
         {heading}
       </p>
       <div className="mt-2 flex flex-wrap gap-2">

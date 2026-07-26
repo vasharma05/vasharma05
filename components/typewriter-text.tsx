@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type TypewriterTextProps = {
   text: string;
@@ -17,8 +17,19 @@ export function TypewriterText({
 }: TypewriterTextProps) {
   const [display, setDisplay] = useState("");
   const [done, setDone] = useState(false);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      setDisplay(text);
+      setDone(true);
+      onCompleteRef.current?.();
+      return;
+    }
     setDisplay("");
     setDone(false);
     let i = 0;
@@ -28,28 +39,32 @@ export function TypewriterText({
         i++;
       } else {
         setDone(true);
-        onComplete?.();
+        onCompleteRef.current?.();
         clearInterval(t);
       }
     }, speed);
     return () => clearInterval(t);
-  }, [text, speed, onComplete]);
+  }, [text, speed]);
+
+  const skip = () => {
+    setDisplay(text);
+    setDone(true);
+    onCompleteRef.current?.();
+  };
 
   return (
-    <span className={className}>
+    <span className={className} onClick={!done ? skip : undefined}>
       {display}
       <span
         className={`ml-1 inline-block align-middle ${
-          done ? "opacity-40" : "animate-pulse"
+          done ? "opacity-40" : "caret-blink"
         }`}
         style={{
-          animationDuration: "0.8s",
-          borderLeft: "1px solid var(--muted)",
+          borderLeft: "2px solid var(--muted)",
           height: "0.9em",
         }}
         aria-hidden
-      >
-      </span>
+      />
     </span>
   );
 }

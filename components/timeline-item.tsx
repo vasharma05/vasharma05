@@ -2,12 +2,15 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type SectionFadeProps = {
+export function TimelineItem({
+  children,
+  delayMs = 0,
+  year,
+}: {
   children: React.ReactNode;
-  className?: string;
-};
-
-export function SectionFade({ children, className = "" }: SectionFadeProps) {
+  delayMs?: number;
+  year?: string | null;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -28,7 +31,7 @@ export function SectionFade({ children, className = "" }: SectionFadeProps) {
           observer.disconnect();
         }
       },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -37,11 +40,8 @@ export function SectionFade({ children, className = "" }: SectionFadeProps) {
   return (
     <div
       ref={ref}
-      className={`transition-all duration-700 ease-out ${
-        visible
-          ? "translate-y-0 opacity-100"
-          : "translate-y-8 opacity-0"
-      } ${className}`}
+      className={`timeline-item ${visible ? "is-visible" : "is-hidden"}`}
+      style={{ transitionDelay: visible ? `${delayMs}ms` : "0ms" }}
     >
       {children}
     </div>

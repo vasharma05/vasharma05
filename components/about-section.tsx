@@ -16,11 +16,11 @@ export function AboutSection({ title, summaryItems }: AboutSectionProps) {
   return (
     <section id="about" className="section">
       <h2 className="section-title">{title}</h2>
-      <div className="card mx-auto flex max-w-5xl flex-col gap-6 sm:flex-row">
+      <div className="flex flex-col gap-6 sm:flex-row">
         <div className="flex-shrink-0 sm:w-40">
           <div className="h-32 w-32 rounded-full bg-gradient-to-br from-sky-500 to-indigo-500 opacity-90 sm:h-36 sm:w-36" />
         </div>
-        <div className="flex-1 space-y-3 text-base text-[var(--muted)]">
+        <div className="flex-1 space-y-3 text-sm text-[var(--muted)]">
           {first && (
             <p>
               <TypewriterText text={first.text} speed={35} />

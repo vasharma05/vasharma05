@@ -1,15 +1,25 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
 export function ScrollDownArrow({ targetId = "about" }: { targetId?: string }) {
+  const [hidden, setHidden] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setHidden(window.scrollY > 120);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <a
       href={`#${targetId}`}
-      className="mt-auto flex flex-col items-center gap-1 text-[var(--muted)] transition hover:text-[var(--foreground)]"
       aria-label={`Scroll to ${targetId} section`}
+      className={`mt-auto inline-flex text-[var(--muted)] transition-opacity duration-500 hover:text-[var(--foreground)] ${
+        hidden ? "pointer-events-none opacity-0" : "opacity-100"
+      }`}
     >
-      <span className="text-sm font-medium uppercase tracking-widest">
-        Scroll
-      </span>
       <svg
         className="h-10 w-10 animate-bounce"
         fill="none"

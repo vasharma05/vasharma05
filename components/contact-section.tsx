@@ -45,90 +45,89 @@ export function ContactSection({ contact, profile }: ContactSectionProps) {
     <section id="contact" className="section">
       <h2 className="section-title">{contact.title}</h2>
       {contact.copy.visible && (
-        <p className="section-subtitle">{contact.copy.text}</p>
+        <p className="mb-8 max-w-2xl text-base leading-relaxed text-[var(--muted)]">
+          {contact.copy.text}
+        </p>
       )}
-      <div className="mx-auto flex max-w-3xl flex-col gap-6 md:flex-row">
-        <div className="card flex-1 text-base">
-          <form onSubmit={handleSubmit} className="space-y-3">
-            {contact.form.fields
-              .filter((field) => field.visible)
-              .map((field) => (
-                <div key={field.id} className="text-sm">
-                  <label
-                    htmlFor={field.id}
-                    className="mb-1 block font-medium text-[var(--foreground)]"
-                  >
-                    {field.label}
-                    {field.required && (
-                      <span className="ml-0.5 text-red-500">*</span>
-                    )}
-                  </label>
-                  {field.type === "textarea" ? (
-                    <textarea
-                      id={field.id}
-                      name={field.id}
-                      required={field.required}
-                      className="w-full rounded-md border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
-                      rows={4}
-                    />
-                  ) : field.type === "select" ? (
-                    <select
-                      id={field.id}
-                      name={field.id}
-                      required={field.required}
-                      className="w-full rounded-md border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
-                    >
-                      <option value="">Select...</option>
-                      {field.options
-                        ?.filter((opt) => opt.visible)
-                        .map((opt) => (
-                          <option key={opt.value} value={opt.value}>
-                            {opt.label}
-                          </option>
-                        ))}
-                    </select>
-                  ) : (
-                    <input
-                      id={field.id}
-                      name={field.id}
-                      type={field.type}
-                      required={field.required}
-                      className="w-full rounded-md border border-[var(--border)] bg-[var(--background)] px-3 py-2 text-sm text-[var(--foreground)] outline-none focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500"
-                    />
+
+      <div className="max-w-2xl space-y-6">
+        {contact.email.visible && (
+          <p className="text-sm text-[var(--muted)]">
+            Reach me at{" "}
+            <a
+              href={`mailto:${contact.email.address}`}
+              className="text-[var(--foreground)] underline underline-offset-4"
+            >
+              {contact.email.address}
+            </a>
+            {profile.visible && (
+              <>
+                {" · "}
+                Based in {profile.location}
+              </>
+            )}
+          </p>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {contact.form.fields
+            .filter((field) => field.visible)
+            .map((field) => (
+              <div key={field.id} className="text-sm">
+                <label
+                  htmlFor={field.id}
+                  className="mb-1 block font-medium text-[var(--foreground)]"
+                >
+                  {field.label}
+                  {field.required && (
+                    <span className="ml-0.5 text-red-500">*</span>
                   )}
-                </div>
-              ))}
+                </label>
+                {field.type === "textarea" ? (
+                  <textarea
+                    id={field.id}
+                    name={field.id}
+                    required={field.required}
+                    className="w-full border-0 border-b border-[var(--border)] bg-transparent px-0 py-2 text-sm text-[var(--foreground)] outline-none transition focus:border-[var(--foreground)]"
+                    rows={4}
+                  />
+                ) : field.type === "select" ? (
+                  <select
+                    id={field.id}
+                    name={field.id}
+                    required={field.required}
+                    className="w-full border-0 border-b border-[var(--border)] bg-transparent px-0 py-2 text-sm text-[var(--foreground)] outline-none transition focus:border-[var(--foreground)]"
+                  >
+                    <option value="">Select...</option>
+                    {field.options
+                      ?.filter((opt) => opt.visible)
+                      .map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                  </select>
+                ) : (
+                  <input
+                    id={field.id}
+                    name={field.id}
+                    type={field.type}
+                    required={field.required}
+                    className="w-full border-0 border-b border-[var(--border)] bg-transparent px-0 py-2 text-sm text-[var(--foreground)] outline-none transition focus:border-[var(--foreground)]"
+                  />
+                )}
+              </div>
+            ))}
+          <div className="pt-2">
             <button
               type="submit"
-              className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-zinc-900 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-zinc-200"
+              className="inline-flex items-center justify-center rounded-full bg-[var(--foreground)] px-6 py-2.5 text-sm font-semibold text-[var(--background)] shadow-sm transition hover:opacity-90"
             >
               Send message
             </button>
-          </form>
-        </div>
-        <div className="card flex-1 text-base">
-          {contact.email.visible && (
-            <p className="text-sm text-[var(--muted)]">
-              Email{" "}
-              <a
-                href={`mailto:${contact.email.address}`}
-                className="text-[var(--foreground)] underline underline-offset-2"
-              >
-                {contact.email.address}
-              </a>{" "}
-              or use the form. Submissions open your mail client and can be
-              wired to a Google Sheet via Apps Script.
-            </p>
-          )}
-          {profile.visible && (
-            <p className="mt-4 text-sm text-[var(--muted)]">
-              Based in {profile.location}. Open to remote and hybrid roles
-              focused on frontend, microfrontends, and digital health.
-            </p>
-          )}
-        </div>
+          </div>
+        </form>
       </div>
     </section>
   );
 }
-

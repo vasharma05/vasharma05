@@ -63,9 +63,9 @@ export function HeroTitle({
     <span className={className}>
       {text}
       <span
-        className="ml-1 inline-block align-middle animate-pulse"
+        className="ml-1 inline-block align-middle caret-blink"
         style={{
-          borderLeft: "1px solid var(--muted)",
+          borderLeft: "2px solid currentColor",
           height: "0.9em",
         }}
         aria-hidden
