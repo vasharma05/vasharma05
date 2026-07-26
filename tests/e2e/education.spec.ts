@@ -5,10 +5,7 @@ import path from "node:path";
 type EduItem = { visible: boolean; institution: string; degree: string };
 
 function loadEducation(): EduItem[] {
-  const raw = fs.readFileSync(
-    path.join(process.cwd(), "public", "content.json"),
-    "utf8",
-  );
+  const raw = fs.readFileSync(path.join(process.cwd(), "public", "content.json"), "utf8");
   const parsed = JSON.parse(raw) as {
     education: { items: EduItem[] };
   };

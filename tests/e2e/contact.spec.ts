@@ -23,9 +23,7 @@ test.describe("contact form", () => {
     await expect(form.getByRole("button", { name: /send message/i })).toBeVisible();
   });
 
-  test("empty submit is blocked by native validation (mailto: does not fire)", async ({
-    page,
-  }) => {
+  test("empty submit is blocked by native validation (mailto: does not fire)", async ({ page }) => {
     await page.goto("/");
     const section = page.locator("#contact");
     await section.scrollIntoViewIfNeeded();
