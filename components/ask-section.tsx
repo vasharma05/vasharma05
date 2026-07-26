@@ -57,8 +57,8 @@ export function AskSection() {
     <section id="ask" className="section">
       <h2 className="section-title">Ask about my experience</h2>
       <p className="section-subtitle mx-auto mb-6 max-w-xl text-center">
-        Ask a question about my background, skills, or projects. Answers are
-        based on my portfolio content.
+        Ask a question about my background, skills, or projects. Answers are based on my portfolio
+        content.
       </p>
       <div className="mx-auto max-w-2xl">
         <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:flex-row">

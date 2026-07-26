@@ -1,11 +1,12 @@
 import content from "../public/content.json";
+import type { SiteContent } from "./content-types";
 
-export type SiteContent = typeof content;
+export type { SiteContent } from "./content-types";
+
+// Single boundary cast: the raw JSON literal type is widened/narrowed here so
+// downstream consumers get the shared, well-typed SiteContent surface.
+const typedContent = content as unknown as SiteContent;
 
 export async function getContent(): Promise<SiteContent> {
-  // For now this is a simple in-memory import.
-  // If you ever need true runtime loading, this can be
-  // replaced with a fetch or filesystem read on the server.
-  return content;
+  return typedContent;
 }
-

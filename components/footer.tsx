@@ -1,4 +1,4 @@
-type Social = { visible: boolean; id: string; label: string; url: string };
+import type { Social } from "@/lib/content-types";
 
 type FooterProps = {
   profileName: string;

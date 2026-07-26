@@ -119,20 +119,20 @@ All sections live on one page with smooth scroll navigation.
 
 ## 4. Technical Requirements
 
-| Item               | Requirement                                                                                                          |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| **Framework**      | Next.js (App Router), JavaScript                                                                                     |
-| **Styling**        | Tailwind CSS; design tokens via CSS variables and Tailwind config                                                    |
-| **UI components**  | shadcn/ui + Radix primitives for accessible, flat/minimal components (buttons, dialogs, etc.)                        |
-| **Structure**      | Single-page layout (one main route) with anchored sections                                                           |
-| **Content**        | All content from a single runtime-fetched `/content.json` file (in `public/`), including links and image paths       |
-| **Images**         | Local images in the repo for profile photo, project thumbnails, and selected skill logos                             |
-| **Theme**          | Light ↔ Dark toggle; initial theme follows system; subsequent choice stored in `localStorage`                        |
+| Item               | Requirement                                                                                                                                                      |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Framework**      | Next.js (App Router), JavaScript                                                                                                                                 |
+| **Styling**        | Tailwind CSS; design tokens via CSS variables and Tailwind config                                                                                                |
+| **UI components**  | shadcn/ui + Radix primitives for accessible, flat/minimal components (buttons, dialogs, etc.)                                                                    |
+| **Structure**      | Single-page layout (one main route) with anchored sections                                                                                                       |
+| **Content**        | All content from a single runtime-fetched `/content.json` file (in `public/`), including links and image paths                                                   |
+| **Images**         | Local images in the repo for profile photo, project thumbnails, and selected skill logos                                                                         |
+| **Theme**          | Light ↔ Dark toggle; initial theme follows system; subsequent choice stored in `localStorage`                                                                    |
 | **Behavior**       | **Smooth scroll** for in-page links (CSS `scroll-behavior: smooth`); **Intersection Observer** for scroll-triggered fade-in (translate/opacity only) on sections |
-| **Responsiveness** | Mobile, tablet, desktop; nav collapses to menu on small screens                                                      |
-| **Performance**    | Static assets only (hosted as static Next.js site); avoid animating blur; lightweight animations and effects         |
-| **Accessibility**  | Semantic HTML; Radix-based components; aria-labels; focus states; sufficient color contrast (aim for WCAG AA)        |
-| **SEO**            | Best practices + JSON-LD (Person/Portfolio), Open Graph & Twitter cards; canonical URLs for `https://vasharma05.com` |
+| **Responsiveness** | Mobile, tablet, desktop; nav collapses to menu on small screens                                                                                                  |
+| **Performance**    | Static assets only (hosted as static Next.js site); avoid animating blur; lightweight animations and effects                                                     |
+| **Accessibility**  | Semantic HTML; Radix-based components; aria-labels; focus states; sufficient color contrast (aim for WCAG AA)                                                    |
+| **SEO**            | Best practices + JSON-LD (Person/Portfolio), Open Graph & Twitter cards; canonical URLs for `https://vasharma05.com`                                             |
 
 ---
 
@@ -157,10 +157,10 @@ All sections live on one page with smooth scroll navigation.
 
 ## 7. Document History
 
-| Version | Date     | Changes                                                                                           |
-| ------- | -------- | ------------------------------------------------------------------------------------------------- |
-| 1.0     | Feb 2025 | Initial PRD from conversation: full scope, liquid glass, contrast fixes, all sections.            |
-| 1.1     | Feb 2025 | Switched to Next.js + Tailwind + shadcn/ui, flat minimal cards, JSON-based content, theming, SEO. |
+| Version | Date     | Changes                                                                                                                                                                                                                                                                                              |
+| ------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.0     | Feb 2025 | Initial PRD from conversation: full scope, liquid glass, contrast fixes, all sections.                                                                                                                                                                                                               |
+| 1.1     | Feb 2025 | Switched to Next.js + Tailwind + shadcn/ui, flat minimal cards, JSON-based content, theming, SEO.                                                                                                                                                                                                    |
 | 1.2     | Feb 2025 | Implemented: typewriter (About), hero 90vh + scroll arrow, CTA resume/contact, smooth scroll nav, Skills (dividers, Font Awesome, center align, left-to-right flow, padding), Leadership/Achievements list view, Contact + Footer, section fade animations, site-wide and hero typography increases. |
 
 ---

@@ -19,7 +19,7 @@ export function ExperienceProjectJumpLinks({
   function goToProject(slug: string) {
     const id = projectCardId(slug);
     const el = document.getElementById(id);
-    if (!el || !(el instanceof HTMLElement)) return;
+    if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "center" });
     el.focus({ preventScroll: true });
     const hash = `#${id}`;
@@ -30,9 +30,7 @@ export function ExperienceProjectJumpLinks({
 
   return (
     <div className="border-t border-[var(--border)] pt-3">
-      <p className="text-xs font-semibold tracking-wide text-[var(--muted)]">
-        {heading}
-      </p>
+      <p className="text-xs font-semibold tracking-wide text-[var(--muted)]">{heading}</p>
       <div className="mt-2 flex flex-wrap gap-2">
         {items.map((item) => (
           <a

@@ -15,12 +15,7 @@ export function EducationLogo({ src, alt, className = "" }: EducationLogoProps) 
 
   return (
     <div className="flex-shrink-0">
-      <img
-        src={src}
-        alt={alt}
-        className={className}
-        onError={() => setError(true)}
-      />
+      <img src={src} alt={alt} className={className} onError={() => setError(true)} />
     </div>
   );
 }

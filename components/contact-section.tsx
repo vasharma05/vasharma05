@@ -30,9 +30,7 @@ export function ContactSection({ contact, profile }: ContactSectionProps) {
       message,
     ];
 
-    const body = lines
-      .map((line) => encodeURIComponent(String(line)))
-      .join("%0A");
+    const body = lines.map((line) => encodeURIComponent(String(line))).join("%0A");
 
     const mailto = `mailto:${contact.mailto.to}?subject=${encodeURIComponent(
       contact.mailto.subjectPrefix + String(subject),
@@ -79,9 +77,7 @@ export function ContactSection({ contact, profile }: ContactSectionProps) {
                   className="mb-1 block font-medium text-[var(--foreground)]"
                 >
                   {field.label}
-                  {field.required && (
-                    <span className="ml-0.5 text-red-500">*</span>
-                  )}
+                  {field.required && <span className="ml-0.5 text-red-500">*</span>}
                 </label>
                 {field.type === "textarea" ? (
                   <textarea

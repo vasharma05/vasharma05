@@ -1,41 +1,19 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useReveal } from "@/lib/hooks/use-reveal";
 
 export function TimelineItem({
   children,
   delayMs = 0,
-  year,
 }: {
   children: React.ReactNode;
   delayMs?: number;
   year?: string | null;
 }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setVisible(true);
-      return;
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.15, rootMargin: "0px 0px -60px 0px" },
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, visible } = useReveal<HTMLDivElement>({
+    threshold: 0.15,
+    rootMargin: "0px 0px -60px 0px",
+  });
 
   return (
     <div

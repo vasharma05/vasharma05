@@ -9,12 +9,7 @@ type HeroTitleProps = {
   className?: string;
 };
 
-export function HeroTitle({
-  options,
-  speed = 90,
-  pauseMs = 1200,
-  className = "",
-}: HeroTitleProps) {
+export function HeroTitle({ options, speed = 90, pauseMs = 1200, className = "" }: HeroTitleProps) {
   const safeOptions = options.length > 0 ? options : [""];
   const [index, setIndex] = useState(0);
   const [text, setText] = useState("");
@@ -48,12 +43,9 @@ export function HeroTitle({
         : current.slice(0, text.length + 1);
 
       const typingSpeed = speed;
-      const deletingSpeed = Math.max(40, Math.floor((speed ?? 90) / 2));
+      const deletingSpeed = Math.max(40, Math.floor(speed / 2));
 
-      timeout = setTimeout(
-        () => setText(nextText),
-        isDeleting ? deletingSpeed : typingSpeed,
-      );
+      timeout = setTimeout(() => setText(nextText), isDeleting ? deletingSpeed : typingSpeed);
     }
 
     return () => clearTimeout(timeout);
@@ -73,4 +65,3 @@ export function HeroTitle({
     </span>
   );
 }
-

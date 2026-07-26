@@ -1,0 +1,6 @@
+.next/
+out/
+node_modules/
+public/content.json
+package-lock.json
+.orchestration/

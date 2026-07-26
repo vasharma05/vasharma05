@@ -4,42 +4,13 @@ import { useState } from "react";
 import { EducationLogo } from "@/components/education-logo";
 import { ExperienceProjectJumpLinks } from "@/components/experience-project-jump-links";
 import { withBasePath } from "@/lib/base-path";
+import { isExternalHref } from "@/lib/href";
+import type { ExperienceItem } from "@/lib/content-types";
 
-type Position = {
-  visible: boolean;
-  type?: string;
-  title: string;
-  period: string;
-  responsibilities?: ({ text?: string } | string)[];
-};
-
-type Highlight = { visible: boolean; text: string };
-
-type JumpLinkItem = { visible: boolean; slug: string; label: string };
-
-export type ExperienceItem = {
-  company?: string;
-  location?: string;
-  period?: string;
-  summary?: string;
-  logo?: { visible?: boolean; src?: string; alt?: string };
-  primaryLink?: { visible?: boolean; url: string; label: string };
-  projectJumpLinks?: {
-    visible?: boolean;
-    heading?: string;
-    items?: JumpLinkItem[];
-  };
-  positions?: Position[];
-  highlights?: Highlight[];
-  techStackUsed?: string[];
-};
+export type { ExperienceItem };
 
 const TECH_CAP = 8;
 const HIGHLIGHTS_PREVIEW = 1;
-
-function isExternal(href: string) {
-  return /^https?:\/\//i.test(href);
-}
 
 export function ExperienceCard({ item }: { item: ExperienceItem }) {
   const [expanded, setExpanded] = useState(false);
@@ -77,18 +48,12 @@ export function ExperienceCard({ item }: { item: ExperienceItem }) {
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <div>
-              <h3 className="text-xl font-semibold text-[var(--foreground)]">
-                {item.company}
-              </h3>
+              <h3 className="text-xl font-semibold text-[var(--foreground)]">{item.company}</h3>
               {item.location && (
-                <p className="mt-0.5 text-sm text-[var(--muted)]">
-                  {item.location}
-                </p>
+                <p className="mt-0.5 text-sm text-[var(--muted)]">{item.location}</p>
               )}
             </div>
-            <span className="text-sm font-medium text-[var(--muted)]">
-              {item.period}
-            </span>
+            <span className="text-sm font-medium text-[var(--muted)]">{item.period}</span>
           </div>
 
           {hasJump && jump ? (
@@ -103,7 +68,7 @@ export function ExperienceCard({ item }: { item: ExperienceItem }) {
               <a
                 href={item.primaryLink.url}
                 className="underline underline-offset-2"
-                {...(isExternal(item.primaryLink.url)
+                {...(isExternalHref(item.primaryLink.url)
                   ? {
                       target: "_blank" as const,
                       rel: "noreferrer" as const,
@@ -128,8 +93,7 @@ export function ExperienceCard({ item }: { item: ExperienceItem }) {
                 {positions.map((p, i) => {
                   const isCurrent = i === 0;
                   const hasResp =
-                    Array.isArray(p.responsibilities) &&
-                    p.responsibilities.length > 0;
+                    Array.isArray(p.responsibilities) && p.responsibilities.length > 0;
                   return (
                     <li key={i} className="relative pl-6">
                       <span
@@ -143,9 +107,7 @@ export function ExperienceCard({ item }: { item: ExperienceItem }) {
                       <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                         <span
                           className={`text-sm font-semibold ${
-                            isCurrent
-                              ? "text-[var(--foreground)]"
-                              : "text-[var(--foreground)]/80"
+                            isCurrent ? "text-[var(--foreground)]" : "text-[var(--foreground)]/80"
                           }`}
                         >
                           {p.title}
@@ -157,9 +119,7 @@ export function ExperienceCard({ item }: { item: ExperienceItem }) {
                       {hasResp && (
                         <ul className="mt-2 list-disc space-y-1 pl-4 text-xs leading-relaxed text-[var(--muted)]">
                           {p.responsibilities!.map((r, rIdx) => (
-                            <li key={rIdx}>
-                              {typeof r === "string" ? r : r.text}
-                            </li>
+                            <li key={rIdx}>{typeof r === "string" ? r : r.text}</li>
                           ))}
                         </ul>
                       )}
@@ -204,9 +164,7 @@ export function ExperienceCard({ item }: { item: ExperienceItem }) {
                   onClick={() => setExpanded((v) => !v)}
                   className="inline-flex items-center gap-1.5 rounded-full border border-[var(--border)] bg-[var(--background)]/80 px-3 py-1 text-xs font-semibold text-[var(--foreground)] transition hover:border-[var(--foreground)]/30 hover:bg-[var(--foreground)]/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--foreground)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--background)]"
                 >
-                  {expanded
-                    ? "Show less"
-                    : `Show ${extraHighlights.length} more`}
+                  {expanded ? "Show less" : `Show ${extraHighlights.length} more`}
                   <svg
                     className={`h-3 w-3 transition-transform ${expanded ? "rotate-180" : ""}`}
                     viewBox="0 0 24 24"

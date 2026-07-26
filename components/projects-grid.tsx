@@ -3,21 +3,7 @@
 import * as React from "react";
 import { projectCardId } from "@/lib/project-card-id";
 import { withBasePath } from "@/lib/base-path";
-
-type VisibleText = { visible?: boolean; text: string };
-type VisibleTag = { visible?: boolean | string; label: string };
-
-export type ProjectItem = {
-  visible?: boolean;
-  slug: string;
-  title: string;
-  role: string;
-  organization: string;
-  summary: string;
-  tags: VisibleTag[];
-  highlights?: VisibleText[];
-  image?: { visible?: boolean; src?: string; alt?: string };
-};
+import type { ProjectItem } from "@/lib/content-types";
 
 export function ProjectsGrid({ items }: { items: ProjectItem[] }) {
   const [open, setOpen] = React.useState<Record<string, boolean>>({});
@@ -27,8 +13,7 @@ export function ProjectsGrid({ items }: { items: ProjectItem[] }) {
       {items
         .filter((item) => item.visible !== false)
         .map((item) => {
-          const visibleHighlights =
-            item.highlights?.filter((h) => h.visible !== false) ?? [];
+          const visibleHighlights = item.highlights?.filter((h) => h.visible !== false) ?? [];
           const [leadHighlight, ...restHighlights] = visibleHighlights;
           const canExpand = restHighlights.length > 0;
           const isOpen = !!open[item.slug];
@@ -53,15 +38,11 @@ export function ProjectsGrid({ items }: { items: ProjectItem[] }) {
                     loading="lazy"
                   />
                 )}
-                <h3 className="text-base font-semibold text-[var(--foreground)]">
-                  {item.title}
-                </h3>
+                <h3 className="text-base font-semibold text-[var(--foreground)]">{item.title}</h3>
                 <p className="mt-1 text-sm text-[var(--muted)]">
                   {item.organization} · {item.role}
                 </p>
-                <p className="mt-3 text-sm text-[var(--muted)]">
-                  {item.summary}
-                </p>
+                <p className="mt-3 text-sm text-[var(--muted)]">{item.summary}</p>
 
                 {leadHighlight && (
                   <blockquote className="relative mt-4 rounded-md bg-gradient-to-r from-sky-500/[0.06] to-transparent px-4 py-2 [border-image:linear-gradient(to_bottom,#0ea5e9,#6366f1)_1_100%] border-l-2 border-transparent">
@@ -102,9 +83,7 @@ export function ProjectsGrid({ items }: { items: ProjectItem[] }) {
                           }))
                         }
                       >
-                        {isOpen
-                          ? "Show less"
-                          : `Show ${restHighlights.length} more`}
+                        {isOpen ? "Show less" : `Show ${restHighlights.length} more`}
                         <svg
                           className={`h-3 w-3 transition-transform ${isOpen ? "rotate-180" : ""}`}
                           viewBox="0 0 24 24"

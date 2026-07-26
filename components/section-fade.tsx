@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useReveal } from "@/lib/hooks/use-reveal";
 
 type SectionFadeProps = {
   children: React.ReactNode;
@@ -8,39 +8,16 @@ type SectionFadeProps = {
 };
 
 export function SectionFade({ children, className = "" }: SectionFadeProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    if (
-      typeof window !== "undefined" &&
-      window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    ) {
-      setVisible(true);
-      return;
-    }
-    const observer = new IntersectionObserver(
-      (entries) => {
-        if (entries[0].isIntersecting) {
-          setVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
-    );
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  const { ref, visible } = useReveal<HTMLDivElement>({
+    threshold: 0.1,
+    rootMargin: "0px 0px -40px 0px",
+  });
 
   return (
     <div
       ref={ref}
       className={`transition-all duration-700 ease-out ${
-        visible
-          ? "translate-y-0 opacity-100"
-          : "translate-y-8 opacity-0"
+        visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
       } ${className}`}
     >
       {children}

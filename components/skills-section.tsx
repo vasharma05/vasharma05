@@ -1,14 +1,5 @@
-"use client";
-
 import { BrandIcon, hasBrandIcon } from "@/components/brand-icon";
-
-type SkillItem = { visible: boolean; label: string };
-type SkillDomain = {
-  id: string;
-  visible: boolean;
-  label: string;
-  items: SkillItem[];
-};
+import type { SkillDomain, SkillItem } from "@/lib/content-types";
 
 type SkillsSectionProps = {
   title: string;
@@ -52,13 +43,8 @@ export function SkillsSection({ title, domains }: SkillsSectionProps) {
       <h2 className="section-title">{title}</h2>
       <dl className="divide-y divide-[var(--border)]">
         {rows.map((row) => (
-          <div
-            key={row.label}
-            className="grid gap-2 py-5 md:grid-cols-[12rem_1fr] md:gap-8"
-          >
-            <dt className="text-sm font-semibold text-[var(--foreground)]">
-              {row.label}
-            </dt>
+          <div key={row.label} className="grid gap-2 py-5 md:grid-cols-[12rem_1fr] md:gap-8">
+            <dt className="text-sm font-semibold text-[var(--foreground)]">{row.label}</dt>
             <dd className="text-sm leading-relaxed text-[var(--muted)]">
               {row.items.map((s, i) => (
                 <span key={i} className="inline-flex items-center gap-1.5">

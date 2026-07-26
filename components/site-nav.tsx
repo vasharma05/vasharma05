@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { useScrollSpy } from "@/lib/hooks/use-scroll-spy";
 
 type NavItem = { id: string; label: string; targetId: string };
 
@@ -13,7 +14,8 @@ type SiteNavProps = {
 export function SiteNav({ brand, items }: SiteNavProps) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const [activeId, setActiveId] = useState<string | null>(null);
+  const targetIds = useMemo(() => items.map((i) => i.targetId), [items]);
+  const activeId = useScrollSpy(targetIds);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 4);
@@ -22,31 +24,10 @@ export function SiteNav({ brand, items }: SiteNavProps) {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    const targets = items
-      .map((i) => document.getElementById(i.targetId))
-      .filter((el): el is HTMLElement => !!el);
-    if (!targets.length) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) setActiveId(visible[0].target.id);
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
-    );
-    targets.forEach((t) => observer.observe(t));
-    return () => observer.disconnect();
-  }, [items]);
-
   return (
     <header
       className={`sticky top-0 z-30 border-b bg-[var(--background)]/80 backdrop-blur transition-shadow ${
-        scrolled
-          ? "border-[var(--border)] shadow-sm"
-          : "border-transparent"
+        scrolled ? "border-[var(--border)] shadow-sm" : "border-transparent"
       }`}
     >
       <nav className="mx-auto flex max-w-[72rem] items-center justify-between px-4 py-3 sm:px-6 lg:px-8">

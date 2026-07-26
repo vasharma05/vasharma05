@@ -7,28 +7,19 @@ const MODEL = "gemini-3.1-flash-lite-preview";
 export async function POST(request: Request) {
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    return NextResponse.json(
-      { error: "Gemini API key not configured." },
-      { status: 500 },
-    );
+    return NextResponse.json({ error: "Gemini API key not configured." }, { status: 500 });
   }
 
   let body: { question?: string };
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json(
-      { error: "Invalid JSON body." },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "Invalid JSON body." }, { status: 400 });
   }
 
   const question = typeof body?.question === "string" ? body.question.trim() : "";
   if (!question) {
-    return NextResponse.json(
-      { error: "Missing or empty 'question' in body." },
-      { status: 400 },
-    );
+    return NextResponse.json({ error: "Missing or empty 'question' in body." }, { status: 400 });
   }
 
   try {

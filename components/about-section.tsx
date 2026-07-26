@@ -1,12 +1,9 @@
-"use client";
-
 import { TypewriterText } from "@/components/typewriter-text";
-
-type AboutItem = { visible: boolean; text: string };
+import type { AboutSummaryItem } from "@/lib/content-types";
 
 type AboutSectionProps = {
   title: string;
-  summaryItems: AboutItem[];
+  summaryItems: AboutSummaryItem[];
 };
 
 export function AboutSection({ title, summaryItems }: AboutSectionProps) {

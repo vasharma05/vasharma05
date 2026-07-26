@@ -56,9 +56,7 @@ export function TypewriterText({
     <span className={className} onClick={!done ? skip : undefined}>
       {display}
       <span
-        className={`ml-1 inline-block align-middle ${
-          done ? "opacity-40" : "caret-blink"
-        }`}
+        className={`ml-1 inline-block align-middle ${done ? "opacity-40" : "caret-blink"}`}
         style={{
           borderLeft: "2px solid var(--muted)",
           height: "0.9em",
