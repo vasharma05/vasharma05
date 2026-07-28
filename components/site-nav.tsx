@@ -26,7 +26,7 @@ export function SiteNav({ brand, items }: SiteNavProps) {
 
   return (
     <header
-      className={`sticky top-0 z-30 border-b bg-[var(--background)]/80 backdrop-blur transition-shadow ${
+      className={`sticky top-0 z-30 border-b bg-[var(--background)]/95 transition-shadow ${
         scrolled ? "border-[var(--border)] shadow-sm" : "border-transparent"
       }`}
     >

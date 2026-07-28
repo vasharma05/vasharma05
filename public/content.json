@@ -40,9 +40,21 @@
     { "visible": true, "id": "about", "label": "About", "targetId": "about" },
     {
       "visible": true,
+      "id": "education",
+      "label": "Education",
+      "targetId": "education"
+    },
+    {
+      "visible": true,
       "id": "experience",
       "label": "Experience",
       "targetId": "experience"
+    },
+    {
+      "visible": true,
+      "id": "projects",
+      "label": "Projects",
+      "targetId": "projects"
     },
     {
       "visible": true,
@@ -73,18 +85,6 @@
       "id": "events",
       "label": "Events",
       "targetId": "events"
-    },
-    {
-      "visible": true,
-      "id": "projects",
-      "label": "Projects",
-      "targetId": "projects"
-    },
-    {
-      "visible": false,
-      "id": "ask",
-      "label": "Ask",
-      "targetId": "ask"
     },
     {
       "visible": true,
